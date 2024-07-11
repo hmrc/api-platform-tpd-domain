@@ -1,7 +1,7 @@
 
 # api-platform-tpd-domain
 
-This is a placeholder README.md for a new repository
+This is the commonly shared view of TPD domain models and their request/response DTOs
 
 ### License
 

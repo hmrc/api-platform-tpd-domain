@@ -1,0 +1,459 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "api-platform-tpd-domain",
+        "directory": "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain",
+        "workspaceDir": "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain",
+        "sources": [
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/src/main/scala",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/src/main/scala-2.13",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/src/main/scala-2",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/src/main/java",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/../common/src/main/scala",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/target/scala-2.13/src_managed/main"
+        ],
+        "dependencies": [
+            
+        ],
+        "classpath": [
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar",
+            "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/api-platform-common-domain_2.13/0.13.0/api-platform-common-domain_2.13-0.13.0.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.3/play-json_2.13-2.9.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/play-json-union-formatter_2.13/1.21.0/play-json-union-formatter_2.13-1.21.0.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-json_2.13/3.0.1/play-json_2.13-3.0.1.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.3/play-functional_2.13-2.9.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.3/jackson-core-2.14.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.3/jackson-annotations-2.14.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.14.3/jackson-datatype-jdk8-2.14.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.14.3/jackson-datatype-jsr310-2.14.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.3/jackson-databind-2.14.3.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0.jar",
+            "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-functional_2.13/3.0.1/play-functional_2.13-3.0.1.jar"
+        ],
+        "out": "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/.bloop/api-platform-tpd-domain",
+        "classesDir": "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/.bloop/api-platform-tpd-domain/scala-2.13/classes",
+        "resources": [
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/src/main/resources",
+            "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/target/scala-2.13/resource_managed/main"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.13.12",
+            "options": [
+                "-unchecked",
+                "-deprecation",
+                "-Xlint",
+                "-encoding",
+                "UTF-8",
+                "-Ywarn-macros:after",
+                "-release",
+                "8",
+                "-Xplugin:/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalameta/semanticdb-scalac_2.13.12/4.8.10/semanticdb-scalac_2.13.12-4.8.10.jar",
+                "-Yrangepos",
+                "-P:semanticdb:targetroot:/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/api-platform-tpd-domain/target/scala-2.13/meta"
+            ],
+            "jars": [
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.12/scala-compiler-2.13.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/io/github/java-diff-utils/java-diff-utils/4.12/java-diff-utils-4.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.22.0/jline-3.22.0.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": true,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": true,
+                "filterLibraryFromClasspath": true
+            }
+        },
+        "java": {
+            "options": [
+                "-Xlint",
+                "-encoding",
+                "UTF-8",
+                "--release",
+                "8"
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "weaver.framework.CatsEffect"
+                    ]
+                },
+                {
+                    "names": [
+                        "hedgehog.sbt.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/home/clarkm/.sdkman/candidates/java/11.0.12-open",
+                "options": [
+                    "-Duser.dir=/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain"
+                ]
+            },
+            "mainClass": [
+                
+            ],
+            "runtimeConfig": {
+                "home": "/home/clarkm/.sdkman/candidates/java/11.0.12-open",
+                "options": [
+                    "-Duser.dir=/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain"
+                ]
+            },
+            "classpath": [
+                "/home/clarkm/workspace/scala/hmrc/parkin/api-platform-tpd-domain/.bloop/api-platform-tpd-domain/scala-2.13/classes",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/api-platform-common-domain_2.13/0.13.0/api-platform-common-domain_2.13-0.13.0.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.3/play-json_2.13-2.9.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/play-json-union-formatter_2.13/1.21.0/play-json-union-formatter_2.13-1.21.0.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-json_2.13/3.0.1/play-json_2.13-3.0.1.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.3/play-functional_2.13-2.9.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.3/jackson-core-2.14.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.3/jackson-annotations-2.14.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.14.3/jackson-datatype-jdk8-2.14.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.14.3/jackson-datatype-jsr310-2.14.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.3/jackson-databind-2.14.3.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0.jar",
+                "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-functional_2.13/3.0.1/play-functional_2.13-3.0.1.jar"
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.12",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "uk.gov.hmrc",
+                    "name": "api-platform-common-domain_2.13",
+                    "version": "0.13.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "api-platform-common-domain_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/api-platform-common-domain_2.13/0.13.0/api-platform-common-domain_2.13-0.13.0.jar"
+                        },
+                        {
+                            "name": "api-platform-common-domain_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/api-platform-common-domain_2.13/0.13.0/api-platform-common-domain_2.13-0.13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.typesafe.play",
+                    "name": "play-json_2.13",
+                    "version": "2.9.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "play-json_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.3/play-json_2.13-2.9.3.jar"
+                        },
+                        {
+                            "name": "play-json_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.3/play-json_2.13-2.9.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "uk.gov.hmrc",
+                    "name": "play-json-union-formatter_2.13",
+                    "version": "1.21.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "play-json-union-formatter_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/play-json-union-formatter_2.13/1.21.0/play-json-union-formatter_2.13-1.21.0.jar"
+                        },
+                        {
+                            "name": "play-json-union-formatter_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/artefacts.tax.service.gov.uk/artifactory/hmrc-releases/uk/gov/hmrc/play-json-union-formatter_2.13/1.21.0/play-json-union-formatter_2.13-1.21.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-core_2.13",
+                    "version": "2.10.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-core_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0.jar"
+                        },
+                        {
+                            "name": "cats-core_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.10.0/cats-core_2.13-2.10.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.playframework",
+                    "name": "play-json_2.13",
+                    "version": "3.0.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "play-json_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-json_2.13/3.0.1/play-json_2.13-3.0.1.jar"
+                        },
+                        {
+                            "name": "play-json_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-json_2.13/3.0.1/play-json_2.13-3.0.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.typesafe.play",
+                    "name": "play-functional_2.13",
+                    "version": "2.9.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "play-functional_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.3/play-functional_2.13-2.9.3.jar"
+                        },
+                        {
+                            "name": "play-functional_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.3/play-functional_2.13-2.9.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-reflect",
+                    "version": "2.13.12",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-reflect",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar"
+                        },
+                        {
+                            "name": "scala-reflect",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-core",
+                    "version": "2.14.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jackson-core",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.3/jackson-core-2.14.3.jar"
+                        },
+                        {
+                            "name": "jackson-core",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.3/jackson-core-2.14.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-annotations",
+                    "version": "2.14.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jackson-annotations",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.3/jackson-annotations-2.14.3.jar"
+                        },
+                        {
+                            "name": "jackson-annotations",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.3/jackson-annotations-2.14.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.datatype",
+                    "name": "jackson-datatype-jdk8",
+                    "version": "2.14.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jackson-datatype-jdk8",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.14.3/jackson-datatype-jdk8-2.14.3.jar"
+                        },
+                        {
+                            "name": "jackson-datatype-jdk8",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.14.3/jackson-datatype-jdk8-2.14.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.datatype",
+                    "name": "jackson-datatype-jsr310",
+                    "version": "2.14.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jackson-datatype-jsr310",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.14.3/jackson-datatype-jsr310-2.14.3.jar"
+                        },
+                        {
+                            "name": "jackson-datatype-jsr310",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.14.3/jackson-datatype-jsr310-2.14.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-databind",
+                    "version": "2.14.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jackson-databind",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.3/jackson-databind-2.14.3.jar"
+                        },
+                        {
+                            "name": "jackson-databind",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.3/jackson-databind-2.14.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-kernel_2.13",
+                    "version": "2.10.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-kernel_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0.jar"
+                        },
+                        {
+                            "name": "cats-kernel_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.10.0/cats-kernel_2.13-2.10.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.playframework",
+                    "name": "play-functional_2.13",
+                    "version": "3.0.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "play-functional_2.13",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-functional_2.13/3.0.1/play-functional_2.13-3.0.1.jar"
+                        },
+                        {
+                            "name": "play-functional_2.13",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/playframework/play-functional_2.13/3.0.1/play-functional_2.13-3.0.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.12",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/clarkm/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "library"
+        ]
+    }
+}

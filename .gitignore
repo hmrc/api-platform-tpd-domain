@@ -1,3 +1,8 @@
+.*
+!.gitignore
+!.scalafmt.conf
+!.scalafix.conf
+
 logs
 project/project
 project/target
@@ -20,3 +25,7 @@ node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
+.vscode
+.bloop
+.metals
+.bsp

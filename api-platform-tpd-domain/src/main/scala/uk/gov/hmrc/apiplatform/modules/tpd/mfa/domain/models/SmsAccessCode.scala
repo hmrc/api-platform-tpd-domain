@@ -18,7 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import java.time.Instant
 
-import play.api.libs.json.{Format, Json, OFormat}
+import play.api.libs.json.{Format, Json}
 
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
@@ -26,5 +26,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 case class SmsAccessCode(userId: UserId, mfaId: MfaId, accessCode: String, createdTime: Instant)
 
 object SmsAccessCode {
-  implicit val format: OFormat[SmsAccessCode]   = Json.format[SmsAccessCode]
+  implicit val format: Format[SmsAccessCode]   = Json.format[SmsAccessCode]
 }

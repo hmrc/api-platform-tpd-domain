@@ -19,14 +19,15 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 import scala.util.matching.Regex
 
 import play.api.libs.json.{Json, OFormat}
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class EmailIdentifier(val email: String)
+case class EmailIdentifier(val email: LaxEmailAddress)
 
 object EmailIdentifier {
   private[this] val simplestEmailRegex: Regex = """^.+@.+\..+$""".r
 
   def parse(text: String): Option[EmailIdentifier] =
-    simplestEmailRegex.findFirstIn(text).map(EmailIdentifier(_))
+    simplestEmailRegex.findFirstIn(text).map(t => EmailIdentifier(LaxEmailAddress(t)))
 
   implicit val format: OFormat[EmailIdentifier] = Json.format[EmailIdentifier]
 }

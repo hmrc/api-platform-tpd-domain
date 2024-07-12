@@ -16,28 +16,27 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
+import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.DeleteRequest
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
-class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  private val userId = UserId.random
-  private val example = UnregisteredUserResponse(email = LaxEmailAddressData.emailA, creationTime = instant, userId = userId)
+class DeleteRequestSpec extends BaseJsonFormattersSpec {
 
-  "UnregisteredUserResponse JsonFormatters" when {
+  "DeleteRequest JsonFormatters" when {
+    val example = DeleteRequest(gatekeeperUserId = Some("123"), emailAddress = LaxEmailAddressData.emailA)
 
-    "given an empty UnregisteredUserResponse" should {
+    "given a DeleteRequest" should {
       "produce Json" in {
-        testToJson[UnregisteredUserResponse](example)(
-          ("email" -> LaxEmailAddressData.emailA.text),
-          ("creationTime" -> nowAsText),
-          ("userId" -> userId.toString())
+        testToJsonValues[DeleteRequest](example)(
+          ("gatekeeperUserId" -> JsString("123")),
+          ("emailAddress" -> JsString(example.emailAddress.text))
         )
       }
 
       "read json" in {
-        testFromJson[UnregisteredUserResponse](s"""{"email":"${LaxEmailAddressData.emailA.text}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
+        testFromJson[DeleteRequest](s"""{"gatekeeperUserId":"123","emailAddress":"${LaxEmailAddressData.emailA.text}"}""")(example)
       }
     }
   }

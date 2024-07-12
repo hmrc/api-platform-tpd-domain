@@ -19,8 +19,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class AccessCodeAuthenticationRequest(email: String, accessCode: String, nonce: String, mfaId: MfaId)
+case class AccessCodeAuthenticationRequest(email: LaxEmailAddress, accessCode: String, nonce: String, mfaId: MfaId)
 
 object AccessCodeAuthenticationRequest {
   implicit val format: OFormat[AccessCodeAuthenticationRequest] = Json.format[AccessCodeAuthenticationRequest]

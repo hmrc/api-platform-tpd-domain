@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
-
-import play.api.libs.json._
+package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto.ChangeMfaNameRequest
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class ChangeMfaNameRequestSpec extends BaseJsonFormattersSpec {
+  private val example = ChangeMfaNameRequest(name = "new name")
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  private val jsonText = s"""{"name":"new name"}"""
 
-    "given an empty AccountSetup" should {
+  "ChangeMfaNameRequest JsonFormatters" when {
+
+    "given an ChangeMfaNameRequest" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJson[ChangeMfaNameRequest](example)(
+          ( "name" -> "new name")
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[ChangeMfaNameRequest](jsonText)(example)
       }
     }
   }

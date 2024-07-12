@@ -17,8 +17,9 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json.{Json, OFormat}
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class PasswordResetRequest(email: String, newPassword: String)
+case class PasswordResetRequest(email: LaxEmailAddress, newPassword: String)
 
 object PasswordResetRequest {
   implicit val format: OFormat[PasswordResetRequest] = Json.format[PasswordResetRequest]

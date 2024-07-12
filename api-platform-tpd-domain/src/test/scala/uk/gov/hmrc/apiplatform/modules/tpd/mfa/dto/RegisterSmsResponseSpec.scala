@@ -14,29 +14,29 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
-
-import play.api.libs.json._
+package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class RegisterSmsResponseSpec extends BaseJsonFormattersSpec {
+  
+  private val example = RegisterSmsResponse(mobileNumber = "07999123456", mfaId = MfaId.random)
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  private val jsonText = s"""{"mobileNumber":"07999123456","mfaId":"${example.mfaId.toString}"}"""
 
-    "given an empty AccountSetup" should {
+  "RegisterSmsResponse JsonFormatters" when {
+
+    "given an RegisterSmsResponse" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJson[RegisterSmsResponse](example)(
+          ( "mobileNumber" -> "07999123456"),
+          ( "mfaId" -> example.mfaId.toString()),
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[RegisterSmsResponse](jsonText)(example)
       }
     }
   }

@@ -17,8 +17,9 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json.{Json, OFormat}
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class FindOrCreateUserIdRequest(email: String)
+case class FindOrCreateUserIdRequest(email: LaxEmailAddress)
 
 object FindOrCreateUserIdRequest {
   implicit val format: OFormat[FindOrCreateUserIdRequest] = Json.format[FindOrCreateUserIdRequest]

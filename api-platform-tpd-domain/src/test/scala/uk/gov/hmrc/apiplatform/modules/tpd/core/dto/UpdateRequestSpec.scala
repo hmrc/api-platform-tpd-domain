@@ -16,27 +16,25 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UpdateRequest
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class UpdateRequestSpec extends BaseJsonFormattersSpec {
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  "UpdateRequest JsonFormatters" when {
+    val example = UpdateRequest("Bugs", "Bunny", Some("ACME") , accountSetup = Some(AccountSetupRequestSpec.example))
 
-    "given an empty AccountSetup" should {
+    "given an UpdateRequest" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJson[UpdateRequest](example.copy(accountSetup = None))(
+          ("firstName" -> "Bugs"),
+          ("lastName" -> "Bunny"),
+          ("organisation" -> "ACME")
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[UpdateRequest](s"""{"firstName":"Bugs", "lastName": "Bunny", "organisation":"ACME","accountSetup":${AccountSetupRequestSpec.jsonText} }""")(example)
       }
     }
   }

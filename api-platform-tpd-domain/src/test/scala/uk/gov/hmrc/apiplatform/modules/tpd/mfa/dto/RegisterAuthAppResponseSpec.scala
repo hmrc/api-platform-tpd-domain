@@ -14,29 +14,29 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
-
-import play.api.libs.json._
+package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class RegisterAuthAppResponseSpec extends BaseJsonFormattersSpec {
+  
+  private val example = RegisterAuthAppResponse(secret = "aSecret", mfaId = MfaId.random)
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  private val jsonText = s"""{"secret":"aSecret","mfaId":"${example.mfaId.toString}"}"""
 
-    "given an empty AccountSetup" should {
+  "RegisterAuthAppResponse JsonFormatters" when {
+
+    "given an RegisterAuthAppResponse" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJson[RegisterAuthAppResponse](example)(
+          ( "secret" -> "aSecret"),
+          ( "mfaId" -> example.mfaId.toString()),
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[RegisterAuthAppResponse](jsonText)(example)
       }
     }
   }

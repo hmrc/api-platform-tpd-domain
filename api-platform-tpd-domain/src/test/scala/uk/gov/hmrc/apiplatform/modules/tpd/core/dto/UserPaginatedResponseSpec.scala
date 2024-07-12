@@ -19,24 +19,23 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UserPaginatedResponse
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class UserPaginatedResponseSpec extends BaseJsonFormattersSpec {
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  "UserPaginatedResponse JsonFormatters" when {
+    val example = UserPaginatedResponse(totalCount = 0, users = Seq(UserResponseSpec.example))
 
-    "given an empty AccountSetup" should {
+    "given an UserPaginatedResponse" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJsonValues[UserPaginatedResponse](example)(
+          ("totalCount" -> JsNumber(0)),
+          ("users" -> JsArray(Seq(UserResponseSpec.jsonObject)))
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[UserPaginatedResponse](s"""{"totalCount":0, "users": [${UserResponseSpec.jsonText}] }""")(example)
       }
     }
   }

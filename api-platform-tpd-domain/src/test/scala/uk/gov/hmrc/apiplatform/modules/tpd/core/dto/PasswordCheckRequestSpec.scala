@@ -16,28 +16,25 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
+import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.PasswordCheckRequest
 
-class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  private val userId = UserId.random
-  private val example = UnregisteredUserResponse(email = LaxEmailAddressData.emailA, creationTime = instant, userId = userId)
+class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
 
-  "UnregisteredUserResponse JsonFormatters" when {
+  "PasswordCheckRequest JsonFormatters" when {
+    val example = PasswordCheckRequest(email = LaxEmailAddressData.emailA, password = "pwd123")
 
-    "given an empty UnregisteredUserResponse" should {
+    "given an PasswordCheckRequest" should {
       "produce Json" in {
-        testToJson[UnregisteredUserResponse](example)(
-          ("email" -> LaxEmailAddressData.emailA.text),
-          ("creationTime" -> nowAsText),
-          ("userId" -> userId.toString())
+        testToJson[PasswordCheckRequest](example)(
+          ("email" -> example.email.text),
+          ("password" -> "pwd123")
         )
       }
 
       "read json" in {
-        testFromJson[UnregisteredUserResponse](s"""{"email":"${LaxEmailAddressData.emailA.text}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
+        testFromJson[PasswordCheckRequest](s"""{"email":"${LaxEmailAddressData.emailA.text}","password":"pwd123"}""")(example)
       }
     }
   }

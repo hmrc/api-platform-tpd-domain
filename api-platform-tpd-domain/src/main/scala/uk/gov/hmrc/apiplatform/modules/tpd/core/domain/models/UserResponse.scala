@@ -24,9 +24,10 @@ import uk.gov.hmrc.play.json.Union
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
 case class UserResponse(
-    email: String,
+    email: LaxEmailAddress,
     firstName: String,
     lastName: String,
     registrationTime: Instant,
@@ -44,13 +45,6 @@ case class UserResponse(
 object UserResponse extends EnvReads with EnvWrites {
 
   implicit val dateTimeFormat: Format[Instant]                                             = Format(DefaultInstantReads, DefaultInstantWrites)
-  implicit val authenticatorAppMfaDetailFormat: OFormat[AuthenticatorAppMfaDetailResponse] = Json.format[AuthenticatorAppMfaDetailResponse]
-  implicit val smsMfaDetailFormat: OFormat[SmsMfaDetailResponse]                           = Json.format[SmsMfaDetailResponse]
-
-  implicit val mfaDetailFormat: OFormat[MfaDetailResponse] = Union.from[MfaDetailResponse]("mfaType")
-    .and[AuthenticatorAppMfaDetailResponse](MfaType.AUTHENTICATOR_APP.toString)
-    .and[SmsMfaDetailResponse](MfaType.SMS.toString)
-    .format
 
   implicit val format: OFormat[UserResponse] = Json.format[UserResponse]
 }

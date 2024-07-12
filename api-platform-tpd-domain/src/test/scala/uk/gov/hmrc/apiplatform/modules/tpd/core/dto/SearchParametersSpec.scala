@@ -16,27 +16,24 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.SearchParameters
 
-class AccountSetupSpec extends BaseJsonFormattersSpec {
+class SearchParametersSpec extends BaseJsonFormattersSpec {
 
-  "AccountSetup JsonFormatters" when {
-    val example = AccountSetup(roles = List("role1"))
+  "SearchParameters JsonFormatters" when {
+    val example = SearchParameters(emailFilter = Some("a@b.com"), status = Some("OPEN"))
 
-    "given an empty AccountSetup" should {
+    "given an SearchParameters" should {
       "produce Json" in {
-        testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
-          ("incomplete" -> JsBoolean(true))
+        testToJson[SearchParameters](example)(
+          ("emailFilter" -> "a@b.com"),
+          ("status" -> "OPEN")
         )
       }
 
       "read json" in {
-        testFromJson[AccountSetup]("""{"roles":["role1"],"services":[],"targets":[],"incomplete":true}""")(example)
+        testFromJson[SearchParameters]("""{"emailFilter":"a@b.com","status":"OPEN"}""")(example)
       }
     }
   }

@@ -19,8 +19,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class SessionCreateWithDeviceRequest(email: String, password: String, mfaMandatedForUser: Option[Boolean], deviceSessionId: Option[DeviceSessionId])
+case class SessionCreateWithDeviceRequest(email: LaxEmailAddress, password: String, mfaMandatedForUser: Option[Boolean], deviceSessionId: Option[DeviceSessionId])
 
 object SessionCreateWithDeviceRequest {
   implicit val format: OFormat[SessionCreateWithDeviceRequest] = Json.format[SessionCreateWithDeviceRequest]

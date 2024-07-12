@@ -17,26 +17,6 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import java.time.Instant
-import java.util.UUID
-
-import play.api.libs.json.{Format, Json}
-
-case class MfaId(value: UUID) extends AnyVal
-
-object MfaId {
-  implicit val format: Format[MfaId] = Json.valueFormat[MfaId]
-
-  def random: MfaId = MfaId(UUID.randomUUID())
-}
-
-sealed trait MfaType
-
-object MfaType {
-  val values: Set[MfaType] = Set(AUTHENTICATOR_APP, SMS)
-
-  case object AUTHENTICATOR_APP extends MfaType
-  case object SMS               extends MfaType
-}
 
 sealed trait MfaDetailResponse {
   def id: MfaId
@@ -44,6 +24,19 @@ sealed trait MfaDetailResponse {
   def mfaType: MfaType
   def createdOn: Instant
   def verified: Boolean
+}
+
+object MfaDetailResponse {
+  import play.api.libs.json._
+  import uk.gov.hmrc.play.json.Union
+
+  implicit val authenticatorAppMfaDetailFormat: OFormat[AuthenticatorAppMfaDetailResponse] = Json.format[AuthenticatorAppMfaDetailResponse]
+  implicit val smsMfaDetailFormat: OFormat[SmsMfaDetailResponse]                           = Json.format[SmsMfaDetailResponse]
+
+  implicit val mfaDetailFormat: Format[MfaDetailResponse] = Union.from[MfaDetailResponse]("mfaType")
+    .and[AuthenticatorAppMfaDetailResponse](MfaType.AUTHENTICATOR_APP.toString)
+    .and[SmsMfaDetailResponse](MfaType.SMS.toString)
+    .format
 }
 
 case class AuthenticatorAppMfaDetailResponse(id: MfaId, name: String, createdOn: Instant, verified: Boolean = false)

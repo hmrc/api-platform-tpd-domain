@@ -20,8 +20,7 @@ import java.time.Instant
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 
 case class UnregisteredUserResponse(email: LaxEmailAddress, creationTime: Instant, userId: UserId)
 

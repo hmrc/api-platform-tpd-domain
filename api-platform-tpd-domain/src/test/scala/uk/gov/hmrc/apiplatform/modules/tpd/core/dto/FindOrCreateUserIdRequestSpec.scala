@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.FindOrCreateUserIdRequest
 
 class FindOrCreateUserIdRequestSpec extends BaseJsonFormattersSpec {

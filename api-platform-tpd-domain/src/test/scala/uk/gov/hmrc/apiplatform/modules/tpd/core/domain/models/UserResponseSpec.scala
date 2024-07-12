@@ -18,13 +18,10 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import play.api.libs.json._
 
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressData, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailPreferences
-import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailPreferencesSpec
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.SmsMfaDetailResponse
+import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailPreferencesSpec}
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetailResponse}
 
 class UserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
   import UserResponseSpec._
@@ -66,12 +63,13 @@ class UserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
     emailPreferences = EmailPreferencesSpec.example
   )
 
-  val fullJsonText = s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
+  val fullJsonText =
+    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
 
 }
 
 object UserResponseSpec extends FixedClock {
-  val mfaId = MfaId.random
+  val mfaId  = MfaId.random
   val userId = UserId.random
 
   val example = UserResponse(
@@ -91,19 +89,20 @@ object UserResponseSpec extends FixedClock {
   )
 
   val jsonObject = JsObject(Seq(
-    ("userId" -> JsString(userId.toString())),
-    ("email" -> JsString(LaxEmailAddressData.emailA.text)),
-    ("firstName" -> JsString("Bob")),
-    ("lastName" -> JsString("Bobbins")),
+    ("userId"           -> JsString(userId.toString())),
+    ("email"            -> JsString(LaxEmailAddressData.emailA.text)),
+    ("firstName"        -> JsString("Bob")),
+    ("lastName"         -> JsString("Bobbins")),
     ("registrationTime" -> JsString(nowAsText)),
-    ("lastModified" -> JsString(nowAsText)),
-    ("verified" -> JsBoolean(true)),
-    ("organisation" -> JsString("Bobbers")),
-    ("mfaEnabled" -> JsBoolean(false)),
-    ("mfaDetails" -> JsArray.empty),
+    ("lastModified"     -> JsString(nowAsText)),
+    ("verified"         -> JsBoolean(true)),
+    ("organisation"     -> JsString("Bobbers")),
+    ("mfaEnabled"       -> JsBoolean(false)),
+    ("mfaDetails"       -> JsArray.empty),
     ("emailPreferences" -> EmailPreferencesSpec.jsonObject)
   ))
 
-  val jsonText = s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":false,"mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
+  val jsonText =
+    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":false,"mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
 
 }

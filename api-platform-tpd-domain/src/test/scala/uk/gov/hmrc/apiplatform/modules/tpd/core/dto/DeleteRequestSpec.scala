@@ -18,9 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import play.api.libs.json._
 
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.DeleteRequest
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
 
 class DeleteRequestSpec extends BaseJsonFormattersSpec {
 
@@ -31,7 +31,7 @@ class DeleteRequestSpec extends BaseJsonFormattersSpec {
       "produce Json" in {
         testToJsonValues[DeleteRequest](example)(
           ("gatekeeperUserId" -> JsString("123")),
-          ("emailAddress" -> JsString(example.emailAddress.text))
+          ("emailAddress"     -> JsString(example.emailAddress.text))
         )
       }
 

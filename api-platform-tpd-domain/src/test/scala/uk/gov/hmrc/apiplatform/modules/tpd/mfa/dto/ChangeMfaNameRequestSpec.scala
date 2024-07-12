@@ -29,7 +29,7 @@ class ChangeMfaNameRequestSpec extends BaseJsonFormattersSpec {
     "given an ChangeMfaNameRequest" should {
       "produce Json" in {
         testToJson[ChangeMfaNameRequest](example)(
-          ( "name" -> "new name")
+          ("name" -> "new name")
         )
       }
 

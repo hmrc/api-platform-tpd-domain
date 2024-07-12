@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.FindUserIdResponse
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
 class FindUserIdResponseSpec extends BaseJsonFormattersSpec {
 
   "FindUserIdResponse JsonFormatters" when {
-    val userId = UserId.random
+    val userId  = UserId.random
     val example = FindUserIdResponse(userId)
 
     "given an FindUserIdResponse" should {

@@ -22,6 +22,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.AccountSetupRequest
 
 object AccountSetupRequestSpec {
+
   val example = AccountSetupRequest(
     roles = Some(List("r1")),
     rolesOther = Some("ro1"),
@@ -43,13 +44,13 @@ class AccountSetupRequestSpec extends BaseJsonFormattersSpec {
     "given an AccountSetupRequest" should {
       "produce Json" in {
         testToJsonValues[AccountSetupRequest](example)(
-          ("roles" -> JsArray(Seq(JsString("r1")))),
-          ("rolesOther" -> JsString("ro1")),
-          ("services" -> JsArray(Seq(JsString("s1")))),
+          ("roles"         -> JsArray(Seq(JsString("r1")))),
+          ("rolesOther"    -> JsString("ro1")),
+          ("services"      -> JsArray(Seq(JsString("s1")))),
           ("servicesOther" -> JsString("so1")),
-          ("targets" -> JsArray(Seq(JsString("t1")))),
-          ("targetsOther" -> JsString("to1")),
-          ("incomplete" -> JsBoolean(false))
+          ("targets"       -> JsArray(Seq(JsString("t1")))),
+          ("targetsOther"  -> JsString("to1")),
+          ("incomplete"    -> JsBoolean(false))
         )
       }
 

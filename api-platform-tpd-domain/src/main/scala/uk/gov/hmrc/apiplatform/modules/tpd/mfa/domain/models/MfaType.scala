@@ -22,7 +22,7 @@ sealed trait MfaType
 
 object MfaType {
   import play.api.libs.json.Format
-  
+
   val values: Set[MfaType] = Set(AUTHENTICATOR_APP, SMS)
 
   case object AUTHENTICATOR_APP extends MfaType

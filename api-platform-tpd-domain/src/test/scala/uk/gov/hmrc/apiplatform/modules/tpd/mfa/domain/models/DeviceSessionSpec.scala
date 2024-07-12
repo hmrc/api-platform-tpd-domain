@@ -18,10 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSession
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
+import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{DeviceSession, DeviceSessionId}
 
 class DeviceSessionSpec extends BaseJsonFormattersSpec {
   import DeviceSessionSpec._
@@ -47,7 +46,7 @@ object DeviceSessionSpec {
 
   val jsonObject = JsObject(Seq(
     ("deviceSessionId" -> JsString(example.deviceSessionId.toString)),
-    ("userId" -> JsString(example.userId.toString))
+    ("userId"          -> JsString(example.userId.toString))
   ))
 
   val jsonText = s"""{"deviceSessionId":"${example.deviceSessionId.toString}","userId":"${example.userId.toString}"}"""

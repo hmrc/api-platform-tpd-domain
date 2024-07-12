@@ -39,20 +39,19 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
     mobileNumber = "07999123456",
     verified = true
   )
-  
+
   private val smsAppJsonText = s"""{"id":"${smsExample.id.toString()}","name":"aName","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}"""
 
-
   "MfaDetailResponse JsonFormatters" when {
-    
+
     "given an MfaDetailResponse" should {
       "produce authenticator app Json" in {
         testToJsonValues[MfaDetailResponse](authAppExample)(
-          ( "id" -> JsString(authAppExample.id.toString()) ),
-          ( "name" -> JsString("aName") ),
-          ( "createdOn" -> JsString(nowAsText) ),
-          ( "verified" -> JsBoolean(true) ),
-          ( "mfaType" -> JsString(MfaType.AUTHENTICATOR_APP.toString()))
+          ("id"        -> JsString(authAppExample.id.toString())),
+          ("name"      -> JsString("aName")),
+          ("createdOn" -> JsString(nowAsText)),
+          ("verified"  -> JsBoolean(true)),
+          ("mfaType"   -> JsString(MfaType.AUTHENTICATOR_APP.toString()))
         )
       }
 
@@ -60,15 +59,14 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
         testFromJson[MfaDetailResponse](authAppJsonText)(authAppExample)
       }
 
-
       "produce sms Json" in {
         testToJsonValues[MfaDetailResponse](smsExample)(
-          ( "id" -> JsString(smsExample.id.toString()) ),
-          ( "name" -> JsString("aName") ),
-          ( "createdOn" -> JsString(nowAsText) ),
-          ( "mobileNumber" -> JsString("07999123456")),
-          ( "verified" -> JsBoolean(true) ),
-          ( "mfaType" -> JsString(MfaType.SMS.toString()))
+          ("id"           -> JsString(smsExample.id.toString())),
+          ("name"         -> JsString("aName")),
+          ("createdOn"    -> JsString(nowAsText)),
+          ("mobileNumber" -> JsString("07999123456")),
+          ("verified"     -> JsBoolean(true)),
+          ("mfaType"      -> JsString(MfaType.SMS.toString()))
         )
       }
 

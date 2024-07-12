@@ -27,12 +27,12 @@ case object StatusFilter {
 
   val values = Set[StatusFilter](Unverified, Verified, All)
 
-  def apply(value: String): Option[StatusFilter] = 
+  def apply(value: String): Option[StatusFilter] =
     value.toUpperCase match {
       case "UNVERIFIED" => Some(StatusFilter.Unverified)
       case "VERIFIED"   => Some(StatusFilter.Verified)
       case "ALL"        => Some(StatusFilter.All)
-      case _ => None
+      case _            => None
     }
 
   def unsafeApply(value: String): StatusFilter =

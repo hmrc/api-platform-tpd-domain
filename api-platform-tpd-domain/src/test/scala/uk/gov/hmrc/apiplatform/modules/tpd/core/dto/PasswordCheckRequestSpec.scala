@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.PasswordCheckRequest
 
 class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
@@ -28,7 +28,7 @@ class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
     "given an PasswordCheckRequest" should {
       "produce Json" in {
         testToJson[PasswordCheckRequest](example)(
-          ("email" -> example.email.text),
+          ("email"    -> example.email.text),
           ("password" -> "pwd123")
         )
       }

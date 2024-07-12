@@ -44,8 +44,8 @@ object TaxRegimeInterestsSpec {
   val example = TaxRegimeInterests(regime = "aRegime", services = Set("service1"))
 
   val jsonObject = JsObject(Seq(
-    ("regime" -> JsString("aRegime")),
+    ("regime"   -> JsString("aRegime")),
     ("services" -> JsArray(Seq(JsString("service1"))))
   ))
-  val jsonText = s"""{"regime":"aRegime","services":["service1"]}"""
+  val jsonText   = s"""{"regime":"aRegime","services":["service1"]}"""
 }

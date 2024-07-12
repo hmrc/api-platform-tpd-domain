@@ -16,13 +16,11 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressData, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
 class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  private val userId = UserId.random
+  private val userId  = UserId.random
   private val example = UnregisteredUserResponse(email = LaxEmailAddressData.emailA, creationTime = instant, userId = userId)
 
   "UnregisteredUserResponse JsonFormatters" when {
@@ -30,9 +28,9 @@ class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedCloc
     "given an empty UnregisteredUserResponse" should {
       "produce Json" in {
         testToJson[UnregisteredUserResponse](example)(
-          ("email" -> LaxEmailAddressData.emailA.text),
+          ("email"        -> LaxEmailAddressData.emailA.text),
           ("creationTime" -> nowAsText),
-          ("userId" -> userId.toString())
+          ("userId"       -> userId.toString())
         )
       }
 

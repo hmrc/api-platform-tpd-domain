@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UnregisteredUserCreationRequest
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
 
 class UnregisteredUserCreationRequestSpec extends BaseJsonFormattersSpec {
 

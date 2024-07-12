@@ -19,6 +19,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 import scala.util.matching.Regex
 
 import play.api.libs.json.{Json, OFormat}
+
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
 case class EmailIdentifier(val email: LaxEmailAddress)

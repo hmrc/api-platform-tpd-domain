@@ -22,13 +22,13 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UpdateRequest
 class UpdateRequestSpec extends BaseJsonFormattersSpec {
 
   "UpdateRequest JsonFormatters" when {
-    val example = UpdateRequest("Bugs", "Bunny", Some("ACME") , accountSetup = Some(AccountSetupRequestSpec.example))
+    val example = UpdateRequest("Bugs", "Bunny", Some("ACME"), accountSetup = Some(AccountSetupRequestSpec.example))
 
     "given an UpdateRequest" should {
       "produce Json" in {
         testToJson[UpdateRequest](example.copy(accountSetup = None))(
-          ("firstName" -> "Bugs"),
-          ("lastName" -> "Bunny"),
+          ("firstName"    -> "Bugs"),
+          ("lastName"     -> "Bunny"),
           ("organisation" -> "ACME")
         )
       }

@@ -18,10 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.SmsAccessCode
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
+import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsAccessCode}
 
 class SmsAccessCodeSpec extends BaseJsonFormattersSpec {
   import SmsAccessCodeSpec._
@@ -43,14 +42,14 @@ class SmsAccessCodeSpec extends BaseJsonFormattersSpec {
 }
 
 object SmsAccessCodeSpec extends FixedClock {
-  //userId: UserId, mfaId: MfaId, accessCode: String, createdTime: Instant)
+  // userId: UserId, mfaId: MfaId, accessCode: String, createdTime: Instant)
   val example = SmsAccessCode(userId = UserId.random, mfaId = MfaId.random, accessCode = "SOMECODE", createdTime = instant)
 
   val jsonObject = JsObject(Seq(
-    ("userId" -> JsString(example.userId.toString)),
-    ("mfaId" -> JsString(example.mfaId.toString)),
-    ("accessCode" -> JsString(example.accessCode)),
-    ("createdTime" -> JsString(nowAsText)),
+    ("userId"      -> JsString(example.userId.toString)),
+    ("mfaId"       -> JsString(example.mfaId.toString)),
+    ("accessCode"  -> JsString(example.accessCode)),
+    ("createdTime" -> JsString(nowAsText))
   ))
 
   val jsonText = s"""{"userId":"${example.userId.toString}","mfaId":"${example.mfaId.toString}","accessCode":"${example.accessCode.toString}","createdTime":"$nowAsText"}"""

@@ -18,8 +18,8 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json.{Json, OFormat}
 
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 
 case class SessionCreateWithDeviceRequest(email: LaxEmailAddress, password: String, mfaMandatedForUser: Option[Boolean], deviceSessionId: Option[DeviceSessionId])
 

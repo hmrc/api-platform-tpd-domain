@@ -20,7 +20,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 
 class RegisterSmsResponseSpec extends BaseJsonFormattersSpec {
-  
+
   private val example = RegisterSmsResponse(mobileNumber = "07999123456", mfaId = MfaId.random)
 
   private val jsonText = s"""{"mobileNumber":"07999123456","mfaId":"${example.mfaId.toString}"}"""
@@ -30,8 +30,8 @@ class RegisterSmsResponseSpec extends BaseJsonFormattersSpec {
     "given an RegisterSmsResponse" should {
       "produce Json" in {
         testToJson[RegisterSmsResponse](example)(
-          ( "mobileNumber" -> "07999123456"),
-          ( "mfaId" -> example.mfaId.toString()),
+          ("mobileNumber" -> "07999123456"),
+          ("mfaId"        -> example.mfaId.toString())
         )
       }
 

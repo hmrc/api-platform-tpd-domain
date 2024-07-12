@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.RegistrationRequest
 
 class RegistrationRequestSpec extends BaseJsonFormattersSpec {
@@ -28,10 +28,10 @@ class RegistrationRequestSpec extends BaseJsonFormattersSpec {
     "given an RegistrationRequest" should {
       "produce Json" in {
         testToJson[RegistrationRequest](example)(
-          ("email" -> example.email.text),
-          ("password" -> "pwd123"),
+          ("email"     -> example.email.text),
+          ("password"  -> "pwd123"),
           ("firstName" -> "Bob"),
-          ("lastName" -> "Bobbins"),
+          ("lastName"  -> "Bobbins")
         )
       }
 

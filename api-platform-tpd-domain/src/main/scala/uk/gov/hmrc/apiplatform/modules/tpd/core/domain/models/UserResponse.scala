@@ -19,12 +19,10 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 import java.time.Instant
 
 import play.api.libs.json._
-import uk.gov.hmrc.play.json.Union
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
 case class UserResponse(
     email: LaxEmailAddress,
@@ -44,7 +42,7 @@ case class UserResponse(
 
 object UserResponse extends EnvReads with EnvWrites {
 
-  implicit val dateTimeFormat: Format[Instant]                                             = Format(DefaultInstantReads, DefaultInstantWrites)
+  implicit val dateTimeFormat: Format[Instant] = Format(DefaultInstantReads, DefaultInstantWrites)
 
   implicit val format: OFormat[UserResponse] = Json.format[UserResponse]
 }

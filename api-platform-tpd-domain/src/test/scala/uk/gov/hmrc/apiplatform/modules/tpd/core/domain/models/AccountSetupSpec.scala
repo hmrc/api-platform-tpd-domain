@@ -28,9 +28,9 @@ class AccountSetupSpec extends BaseJsonFormattersSpec {
     "given an empty AccountSetup" should {
       "produce Json" in {
         testToJsonValues[AccountSetup](example)(
-          ("roles" -> JsArray(Seq(JsString("role1")))),
-          ("services" -> JsArray()),
-          ("targets" -> JsArray()),
+          ("roles"      -> JsArray(Seq(JsString("role1")))),
+          ("services"   -> JsArray()),
+          ("targets"    -> JsArray()),
           ("incomplete" -> JsBoolean(true))
         )
       }

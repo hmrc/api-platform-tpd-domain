@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 
+import org.scalatest.prop.TableDrivenPropertyChecks
+
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
-import org.scalatest.prop.TableDrivenPropertyChecks
-import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailTopic
-import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailPreferences
+import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailTopic}
 
 class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
   import EmailPreferencesSpec._
@@ -31,7 +31,7 @@ class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenProper
   private val fullJsonText = s"""{"interests":[${TaxRegimeInterestsSpec.jsonText}],"topics":["BUSINESS_AND_POLICY"]}"""
 
   "EmailPreferences JsonFormatters" when {
-    
+
     "given an EmailPreferences" should {
       "produce Json" in {
         testToJsonValues[EmailPreferences](example)(jsonObject.fields.toSeq: _*)
@@ -40,7 +40,7 @@ class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenProper
       "produce full Json" in {
         testToJsonValues[EmailPreferences](fullExample)(
           ("interests" -> JsArray(Seq(TaxRegimeInterestsSpec.jsonObject))),
-          ("topics" -> JsArray(Seq(JsString("BUSINESS_AND_POLICY"))))
+          ("topics"    -> JsArray(Seq(JsString("BUSINESS_AND_POLICY"))))
         )
       }
 
@@ -60,10 +60,10 @@ object EmailPreferencesSpec {
   val example: EmailPreferences = EmailPreferences(interests = List.empty, topics = Set.empty)
 
   val jsonObject = JsObject(Seq(
-      ("interests" -> JsArray.empty),
-      ("topics" -> JsArray.empty)
-   ))
+    ("interests" -> JsArray.empty),
+    ("topics"    -> JsArray.empty)
+  ))
 
-   val jsonText = s"""{"interests":[],"topics":[]}"""
+  val jsonText = s"""{"interests":[],"topics":[]}"""
 
 }

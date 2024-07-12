@@ -30,7 +30,7 @@ class UserPaginatedResponseSpec extends BaseJsonFormattersSpec {
       "produce Json" in {
         testToJsonValues[UserPaginatedResponse](example)(
           ("totalCount" -> JsNumber(0)),
-          ("users" -> JsArray(Seq(UserResponseSpec.jsonObject)))
+          ("users"      -> JsArray(Seq(UserResponseSpec.jsonObject)))
         )
       }
 

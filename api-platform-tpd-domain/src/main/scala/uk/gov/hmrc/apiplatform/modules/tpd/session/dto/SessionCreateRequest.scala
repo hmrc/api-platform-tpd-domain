@@ -17,6 +17,7 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json.{Json, OFormat}
+
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
 case class SessionCreateRequest(email: LaxEmailAddress, password: String, mfaMandatedForUser: Option[Boolean])

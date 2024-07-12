@@ -28,7 +28,7 @@ class SearchParametersSpec extends BaseJsonFormattersSpec {
       "produce Json" in {
         testToJson[SearchParameters](example)(
           ("emailFilter" -> "a@b.com"),
-          ("status" -> "OPEN")
+          ("status"      -> "OPEN")
         )
       }
 

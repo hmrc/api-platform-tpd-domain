@@ -18,9 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserResponse
+import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.User
 
-case class UserPaginatedResponse(totalCount: Int, users: Seq[UserResponse])
+case class UserPaginatedResponse(totalCount: Int, users: Seq[User])
 
 object UserPaginatedResponse {
   implicit val format: Format[UserPaginatedResponse] = Json.format

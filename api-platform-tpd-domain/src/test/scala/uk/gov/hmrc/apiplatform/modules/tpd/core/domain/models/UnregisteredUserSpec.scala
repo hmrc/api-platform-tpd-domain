@@ -19,15 +19,15 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressData, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 
-class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
+class UnregisteredUserSpec extends BaseJsonFormattersSpec with FixedClock {
   private val userId  = UserId.random
-  private val example = UnregisteredUserResponse(email = LaxEmailAddressData.emailA, creationTime = instant, userId = userId)
+  private val example = UnregisteredUser(email = LaxEmailAddressData.emailA, creationTime = instant, userId = userId)
 
-  "UnregisteredUserResponse JsonFormatters" when {
+  "UnregisteredUser JsonFormatters" when {
 
-    "given an empty UnregisteredUserResponse" should {
+    "given an empty UnregisteredUser" should {
       "produce Json" in {
-        testToJson[UnregisteredUserResponse](example)(
+        testToJson[UnregisteredUser](example)(
           ("email"        -> LaxEmailAddressData.emailA.text),
           ("creationTime" -> nowAsText),
           ("userId"       -> userId.toString())
@@ -35,7 +35,7 @@ class UnregisteredUserResponseSpec extends BaseJsonFormattersSpec with FixedCloc
       }
 
       "read json" in {
-        testFromJson[UnregisteredUserResponse](s"""{"email":"${LaxEmailAddressData.emailA.text}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
+        testFromJson[UnregisteredUser](s"""{"email":"${LaxEmailAddressData.emailA.text}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
       }
     }
   }

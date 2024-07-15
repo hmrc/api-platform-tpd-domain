@@ -21,9 +21,9 @@ import play.api.libs.json._
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
 
-class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
+class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
 
-  private val authAppExample: MfaDetailResponse = AuthenticatorAppMfaDetailResponse(
+  private val authAppExample: MfaDetail = AuthenticatorAppMfaDetail(
     id = MfaId.random,
     name = "aName",
     createdOn = instant,
@@ -32,7 +32,7 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
 
   private val authAppJsonText = s"""{"id":"${authAppExample.id.toString()}","name":"aName","createdOn":"$nowAsText","verified":true,"mfaType":"AUTHENTICATOR_APP"}"""
 
-  private val smsExample: MfaDetailResponse = SmsMfaDetailResponse(
+  private val smsExample: MfaDetail = SmsMfaDetail(
     id = MfaId.random,
     name = "aName",
     createdOn = instant,
@@ -42,11 +42,11 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
 
   private val smsAppJsonText = s"""{"id":"${smsExample.id.toString()}","name":"aName","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}"""
 
-  "MfaDetailResponse JsonFormatters" when {
+  "MfaDetail JsonFormatters" when {
 
-    "given an MfaDetailResponse" should {
+    "given an MfaDetail" should {
       "produce authenticator app Json" in {
-        testToJsonValues[MfaDetailResponse](authAppExample)(
+        testToJsonValues[MfaDetail](authAppExample)(
           ("id"        -> JsString(authAppExample.id.toString())),
           ("name"      -> JsString("aName")),
           ("createdOn" -> JsString(nowAsText)),
@@ -56,11 +56,11 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
       }
 
       "read authenticator app json" in {
-        testFromJson[MfaDetailResponse](authAppJsonText)(authAppExample)
+        testFromJson[MfaDetail](authAppJsonText)(authAppExample)
       }
 
       "produce sms Json" in {
-        testToJsonValues[MfaDetailResponse](smsExample)(
+        testToJsonValues[MfaDetail](smsExample)(
           ("id"           -> JsString(smsExample.id.toString())),
           ("name"         -> JsString("aName")),
           ("createdOn"    -> JsString(nowAsText)),
@@ -71,7 +71,7 @@ class MfaDetailResponseSpec extends BaseJsonFormattersSpec with FixedClock {
       }
 
       "read sms json" in {
-        testFromJson[MfaDetailResponse](smsAppJsonText)(smsExample)
+        testFromJson[MfaDetail](smsAppJsonText)(smsExample)
       }
     }
   }

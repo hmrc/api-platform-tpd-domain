@@ -19,41 +19,41 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserResponseSpec
+import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserSpec
 
-class UserSessionResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  import UserSessionResponseSpec._
+class UserSessionSpec extends BaseJsonFormattersSpec with FixedClock {
+  import UserSessionSpec._
 
-  "UserSessionResponse JsonFormatters" when {
+  "UserSession JsonFormatters" when {
 
-    "given a UserSessionResponse" should {
+    "given a UserSession" should {
       "produce Json" in {
-        testToJsonValues[UserSessionResponse](example)(
+        testToJsonValues[UserSession](example)(
           jsonObject.fields.toSeq: _*
         )
       }
 
       "read json" in {
-        testFromJson[UserSessionResponse](UserSessionResponseSpec.jsonText)(example)
+        testFromJson[UserSession](UserSessionSpec.jsonText)(example)
       }
     }
   }
 }
 
-object UserSessionResponseSpec extends FixedClock {
-  val example = UserSessionResponse(
+object UserSessionSpec extends FixedClock {
+  val example = UserSession(
     sessionId = UserSessionId.random,
     loggedInState = LoggedInState.LOGGED_IN,
-    developer = UserResponseSpec.example
+    developer = UserSpec.example
   )
 
   val jsonObject = JsObject(Seq(
     ("sessionId"           -> JsString(example.sessionId.toString())),
     ("loggedInState"       -> JsString("LOGGED_IN")),
-    ("developer"           -> UserResponseSpec.jsonObject),
+    ("developer"           -> UserSpec.jsonObject),
   ))
 
   val jsonText =
-    s"""{"sessionId":"${example.sessionId.toString}","loggedInState":"LOGGED_IN","developer":${UserResponseSpec.jsonText}}"""
+    s"""{"sessionId":"${example.sessionId.toString}","loggedInState":"LOGGED_IN","developer":${UserSpec.jsonText}}"""
 
 }

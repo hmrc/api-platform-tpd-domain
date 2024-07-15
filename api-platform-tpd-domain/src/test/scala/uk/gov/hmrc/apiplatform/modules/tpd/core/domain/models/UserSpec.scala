@@ -21,26 +21,26 @@ import play.api.libs.json._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressData, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailPreferencesSpec}
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetailResponse}
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetail}
 
-class UserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  import UserResponseSpec._
+class UserSpec extends BaseJsonFormattersSpec with FixedClock {
+  import UserSpec._
 
-  "UserResponse JsonFormatters" when {
+  "User JsonFormatters" when {
 
-    "given a UserResponse" should {
+    "given a User" should {
       "produce Json" in {
-        testToJsonValues[UserResponse](example)(
+        testToJsonValues[User](example)(
           jsonObject.fields.toSeq: _*
         )
       }
 
       "read json" in {
-        testFromJson[UserResponse](UserResponseSpec.jsonText)(example)
+        testFromJson[User](UserSpec.jsonText)(example)
       }
 
       "read full json" in {
-        testFromJson[UserResponse](fullJsonText)(fullExample)
+        testFromJson[User](fullJsonText)(fullExample)
       }
 
       "produce full json" in {
@@ -52,7 +52,7 @@ class UserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
   val fullExample = example.copy(
     mfaEnabled = true,
     mfaDetails = List(
-      SmsMfaDetailResponse(
+      SmsMfaDetail(
         id = mfaId,
         createdOn = instant,
         name = "xxx",
@@ -68,11 +68,11 @@ class UserResponseSpec extends BaseJsonFormattersSpec with FixedClock {
 
 }
 
-object UserResponseSpec extends FixedClock {
+object UserSpec extends FixedClock {
   val mfaId  = MfaId.random
   val userId = UserId.random
 
-  val example = UserResponse(
+  val example = User(
     email = LaxEmailAddressData.emailA,
     firstName = "Bob",
     lastName = "Bobbins",

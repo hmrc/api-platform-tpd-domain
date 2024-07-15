@@ -18,7 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import java.time.Instant
 
-sealed trait MfaDetailResponse {
+sealed trait MfaDetail {
   def id: MfaId
   def name: String
   def mfaType: MfaType
@@ -26,30 +26,30 @@ sealed trait MfaDetailResponse {
   def verified: Boolean
 }
 
-object MfaDetailResponse {
+object MfaDetail {
   import play.api.libs.json._
   import uk.gov.hmrc.play.json.Union
 
-  implicit val authenticatorAppMfaDetailFormat: OFormat[AuthenticatorAppMfaDetailResponse] = Json.format[AuthenticatorAppMfaDetailResponse]
-  implicit val smsMfaDetailFormat: OFormat[SmsMfaDetailResponse]                           = Json.format[SmsMfaDetailResponse]
+  implicit val authenticatorAppMfaDetailFormat: OFormat[AuthenticatorAppMfaDetail] = Json.format[AuthenticatorAppMfaDetail]
+  implicit val smsMfaDetailFormat: OFormat[SmsMfaDetail]                           = Json.format[SmsMfaDetail]
 
-  implicit val mfaDetailFormat: Format[MfaDetailResponse] = Union.from[MfaDetailResponse]("mfaType")
-    .and[AuthenticatorAppMfaDetailResponse](MfaType.AUTHENTICATOR_APP.toString)
-    .and[SmsMfaDetailResponse](MfaType.SMS.toString)
+  implicit val mfaDetailFormat: Format[MfaDetail] = Union.from[MfaDetail]("mfaType")
+    .and[AuthenticatorAppMfaDetail](MfaType.AUTHENTICATOR_APP.toString)
+    .and[SmsMfaDetail](MfaType.SMS.toString)
     .format
 }
 
-case class AuthenticatorAppMfaDetailResponse(id: MfaId, name: String, createdOn: Instant, verified: Boolean = false)
-    extends MfaDetailResponse {
+case class AuthenticatorAppMfaDetail(id: MfaId, name: String, createdOn: Instant, verified: Boolean = false)
+    extends MfaDetail {
   override val mfaType: MfaType = MfaType.AUTHENTICATOR_APP
 }
 
-case class SmsMfaDetailResponse(
+case class SmsMfaDetail(
     override val id: MfaId = MfaId.random,
     override val name: String,
     override val createdOn: Instant,
     mobileNumber: String,
     verified: Boolean = false
-  ) extends MfaDetailResponse {
+  ) extends MfaDetail {
   override val mfaType: MfaType = MfaType.SMS
 }

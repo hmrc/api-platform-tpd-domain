@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
+
+import java.time.Instant
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserResponse
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 
-//TODO - rework
+case class UnregisteredUser(email: LaxEmailAddress, creationTime: Instant, userId: UserId)
 
-case class UserSessionResponse(sessionId: UserSessionId, loggedInState: LoggedInState, developer: UserResponse)
+object UnregisteredUser {
+  implicit val format: OFormat[UnregisteredUser] = Json.format[UnregisteredUser]
 
-object UserSessionResponse {
-
-  implicit val format: OFormat[UserSessionResponse] = Json.format[UserSessionResponse]
 }

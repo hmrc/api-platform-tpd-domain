@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json.{Json, OFormat}
-
-import uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models.UserSessionResponse
+import uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models.UserSession
 
 case class UserAuthenticationResponse(
     accessCodeRequired: Boolean,
     mfaEnabled: Boolean,
     nonce: Option[String] = None,
-    session: Option[UserSessionResponse] = None
+    session: Option[UserSession] = None
   )
 
 object UserAuthenticationResponse {

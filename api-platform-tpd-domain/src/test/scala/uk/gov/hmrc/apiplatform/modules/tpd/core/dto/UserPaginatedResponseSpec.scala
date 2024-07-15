@@ -24,18 +24,18 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UserPaginatedResponse
 class UserPaginatedResponseSpec extends BaseJsonFormattersSpec {
 
   "UserPaginatedResponse JsonFormatters" when {
-    val example = UserPaginatedResponse(totalCount = 0, users = Seq(UserResponseSpec.example))
+    val example = UserPaginatedResponse(totalCount = 0, users = Seq(UserSpec.example))
 
     "given an UserPaginatedResponse" should {
       "produce Json" in {
         testToJsonValues[UserPaginatedResponse](example)(
           ("totalCount" -> JsNumber(0)),
-          ("users"      -> JsArray(Seq(UserResponseSpec.jsonObject)))
+          ("users"      -> JsArray(Seq(UserSpec.jsonObject)))
         )
       }
 
       "read json" in {
-        testFromJson[UserPaginatedResponse](s"""{"totalCount":0, "users": [${UserResponseSpec.jsonText}] }""")(example)
+        testFromJson[UserPaginatedResponse](s"""{"totalCount":0, "users": [${UserSpec.jsonText}] }""")(example)
       }
     }
   }

@@ -19,6 +19,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.session.dto.UserAuthenticationResponse
 
 class UserAuthenticationResponseSpec extends BaseJsonFormattersSpec with FixedClock {
   import UserAuthenticationResponseSpec._
@@ -44,16 +45,16 @@ object UserAuthenticationResponseSpec extends FixedClock {
     accessCodeRequired = true,
     mfaEnabled = true,
     nonce = Some("aTextValue"),
-    session = Some(UserSessionResponseSpec.example)
+    session = Some(UserSessionSpec.example)
   )
 
   val jsonObject = JsObject(Seq(
     ("accessCodeRequired"  -> JsBoolean(true)),
     ("mfaEnabled"  -> JsBoolean(true)),
     ("nonce"       -> JsString("aTextValue")),
-    ("session"           -> UserSessionResponseSpec.jsonObject),
+    ("session"           -> UserSessionSpec.jsonObject),
   ))
 
   val jsonText =
-    s"""{"accessCodeRequired":true,"mfaEnabled":true,"nonce":"aTextValue","session":${UserSessionResponseSpec.jsonText}}"""
+    s"""{"accessCodeRequired":true,"mfaEnabled":true,"nonce":"aTextValue","session":${UserSessionSpec.jsonText}}"""
 }

@@ -24,7 +24,7 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, Us
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
 
-case class UserResponse(
+case class User(
     email: LaxEmailAddress,
     firstName: String,
     lastName: String,
@@ -34,15 +34,15 @@ case class UserResponse(
     accountSetup: Option[AccountSetup] = None,
     organisation: Option[String] = None,
     mfaEnabled: Boolean = false,
-    mfaDetails: List[MfaDetailResponse],
+    mfaDetails: List[MfaDetail],
     nonce: Option[String] = None,
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,
     userId: UserId
   )
 
-object UserResponse extends EnvReads with EnvWrites {
+object User extends EnvReads with EnvWrites {
 
   implicit val dateTimeFormat: Format[Instant] = Format(DefaultInstantReads, DefaultInstantWrites)
 
-  implicit val format: OFormat[UserResponse] = Json.format[UserResponse]
+  implicit val format: OFormat[User] = Json.format[User]
 }

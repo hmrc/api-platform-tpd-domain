@@ -19,7 +19,6 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserResponse
-import uk.gov.hmrc.apiplatform.modules.tpd.sessions.domain.models.UserSessionId
 
 //TODO - rework
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.sessions.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
 import java.{util => ju}
 import scala.util.control.Exception._

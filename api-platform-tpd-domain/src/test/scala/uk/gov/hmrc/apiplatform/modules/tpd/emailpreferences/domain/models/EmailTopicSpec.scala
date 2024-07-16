@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 
+import scala.util.Random
+
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 import play.api.libs.json._
@@ -28,11 +30,11 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
   "EmailTopic" should {
     val values =
       Table(
-        ("Source", "json", "string"),
-        (EmailTopic.BUSINESS_AND_POLICY, "BUSINESS_AND_POLICY", "Unverified"),
-        (EmailTopic.EVENT_INVITES, "EVENT_INVITES", "Verified"),
-        (EmailTopic.RELEASE_SCHEDULES, "RELEASE_SCHEDULES", "All"),
-        (EmailTopic.TECHNICAL, "TECHNICAL", "All")
+        ("Source", "json", "display name"),
+        (EmailTopic.BUSINESS_AND_POLICY, "BUSINESS_AND_POLICY", "Business and policy"),
+        (EmailTopic.EVENT_INVITES, "EVENT_INVITES", "Event invites"),
+        (EmailTopic.RELEASE_SCHEDULES, "RELEASE_SCHEDULES", "Release schedules"),
+        (EmailTopic.TECHNICAL, "TECHNICAL", "Technical")
       )
 
     "convert lower case string to case object" in {
@@ -75,6 +77,23 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
       forAll(values) { (s, j, _) =>
         Json.toJson[EmailTopic](s) shouldBe JsString(j)
       }
+    }
+
+    "displayName is correct" in {
+      forAll(values) { (s, _, d) =>
+        s.displayName shouldBe d
+      }
+    }
+
+    "description is present" in {
+      forAll(values) { (s, _, _) =>
+        s.description.isEmpty() shouldBe false
+      }
+    }
+
+    "displayOrder orders correctly" in {
+      import EmailTopic._
+      Random.shuffle(EmailTopic.values.toList).sortBy(_.displayOrder) shouldBe List(BUSINESS_AND_POLICY, TECHNICAL, RELEASE_SCHEDULES, EVENT_INVITES)
     }
   }
 }

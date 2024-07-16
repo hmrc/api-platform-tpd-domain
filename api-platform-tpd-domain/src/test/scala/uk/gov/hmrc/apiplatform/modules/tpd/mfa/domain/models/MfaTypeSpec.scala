@@ -28,13 +28,13 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
   "MfaType" should {
     val values =
       Table(
-        ("Source", "json"),
-        (MfaType.AUTHENTICATOR_APP, "AUTHENTICATOR_APP"),
-        (MfaType.SMS, "SMS")
+        ("Source", "json", "displayText"),
+        (MfaType.AUTHENTICATOR_APP, "AUTHENTICATOR_APP", "Authenticator app"),
+        (MfaType.SMS, "SMS", "Text message")
       )
 
     "convert lower case string to case object" in {
-      forAll(values) { (s, t) =>
+      forAll(values) { (s, t, _) =>
         MfaType.apply(t.toLowerCase) shouldBe Some(s)
         MfaType.unsafeApply(t) shouldBe s
       }
@@ -52,7 +52,7 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
     }
 
     "read from Json" in {
-      forAll(values) { (s, j) =>
+      forAll(values) { (s, j, _) =>
         testFromJson[MfaType](s""""$j"""")(s)
       }
     }
@@ -70,8 +70,14 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
     }
 
     "write to Json" in {
-      forAll(values) { (s, j) =>
+      forAll(values) { (s, j, _) =>
         Json.toJson[MfaType](s) shouldBe JsString(j)
+      }
+    }
+
+    "display text should be correct" in {
+      forAll(values) { (s, _, d) =>
+        s.displayText shouldBe d
       }
     }
   }

@@ -20,7 +20,7 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFor
 
 sealed trait MfaType {
 
-  def asText(): String = {
+  lazy val displayText: String = {
     this match {
       case MfaType.AUTHENTICATOR_APP => "Authenticator app"
       case MfaType.SMS               => "Text message"

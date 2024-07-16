@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, LaxEmailAddressData}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.EmailIdentifier
 
@@ -34,6 +34,11 @@ class EmailIdentifierSpec extends BaseJsonFormattersSpec {
 
       "read json" in {
         testFromJson[EmailIdentifier](s"""{"email":"${LaxEmailAddressData.emailA.text}"}""")(example)
+      }
+
+      "parse text correctly" in {
+        EmailIdentifier.parse("invalid") shouldBe None
+        EmailIdentifier.parse("A@A.com") shouldBe Some(EmailIdentifier(LaxEmailAddress("a@a.com")))
       }
     }
   }

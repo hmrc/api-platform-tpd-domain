@@ -38,11 +38,11 @@ object EmailTopic {
 
   case object EVENT_INVITES extends EmailTopic
 
-  def displayOrder(et: EmailTopic): Byte = et match {
+  def displayOrder(et: EmailTopic): Int = et match {
     case BUSINESS_AND_POLICY => 1
     case TECHNICAL           => 2
     case RELEASE_SCHEDULES   => 3
-    case EVENT_INVITES       => Byte.MaxValue
+    case EVENT_INVITES       => Int.MaxValue
   }
 
   def displayName(et: EmailTopic): String = et match {

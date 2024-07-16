@@ -33,6 +33,8 @@ object AccountSetupRequestSpec {
     incomplete = Some(false)
   )
 
+  val exmapleEmptyLists = example.copy(roles = Some(List.empty), services = Some(List.empty), targets = Some(List.empty))
+
   val jsonText = """{"roles":["r1"],"rolesOther":"ro1","services":["s1"],"servicesOther":"so1","targets":["t1"],"targetsOther":"to1","incomplete":false}"""
 }
 
@@ -56,6 +58,12 @@ class AccountSetupRequestSpec extends BaseJsonFormattersSpec {
 
       "read json" in {
         testFromJson[AccountSetupRequest](jsonText)(example)
+      }
+
+      "toAccountSetup should create correct AccountSetup" in {
+        example.toAccountSetup shouldBe AccountSetup(List("r1"), Some("ro1"), List("s1"), Some("so1"), List("t1"), Some("to1"), false)
+        AccountSetupRequest().toAccountSetup shouldBe AccountSetup(List.empty, None, List.empty, None, List.empty, None, false)
+        exmapleEmptyLists.toAccountSetup shouldBe AccountSetup(List.empty, Some("ro1"), List.empty, Some("so1"), List.empty, Some("to1"), false)
       }
     }
   }

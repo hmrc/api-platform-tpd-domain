@@ -47,10 +47,12 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock {
         Json.toJson(fullExample) shouldBe Json.parse(fullJsonText)
       }
     }
+
+    //TODO test displayName
+    //TODO test hasVerifiedMfa
   }
 
   val fullExample = example.copy(
-    mfaEnabled = true,
     mfaDetails = List(
       SmsMfaDetail(
         id = mfaId,
@@ -64,7 +66,7 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock {
   )
 
   val fullJsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
 
 }
 
@@ -81,7 +83,6 @@ object UserSpec extends FixedClock {
     verified = true,
     accountSetup = None,
     organisation = Some("Bobbers"),
-    mfaEnabled = false,
     mfaDetails = List.empty,
     nonce = None,
     emailPreferences = EmailPreferences.noPreferences,
@@ -97,12 +98,11 @@ object UserSpec extends FixedClock {
     ("lastModified"     -> JsString(nowAsText)),
     ("verified"         -> JsBoolean(true)),
     ("organisation"     -> JsString("Bobbers")),
-    ("mfaEnabled"       -> JsBoolean(false)),
     ("mfaDetails"       -> JsArray.empty),
     ("emailPreferences" -> EmailPreferencesSpec.jsonObject)
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaEnabled":false,"mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
 
 }

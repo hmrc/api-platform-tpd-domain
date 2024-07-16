@@ -33,13 +33,13 @@ case class User(
     verified: Boolean,
     accountSetup: Option[AccountSetup] = None,
     organisation: Option[String] = None,
-    mfaEnabled: Boolean = false,
     mfaDetails: List[MfaDetail],
     nonce: Option[String] = None,
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,
     userId: UserId
   ) {
-  lazy val displayedName: String = s"$firstName $lastName"
+  lazy val displayedName: String   = s"$firstName $lastName"
+  lazy val hasVerifiedMfa: Boolean = mfaDetails.exists(_.verified)
 }
 
 object User extends EnvReads with EnvWrites {

@@ -26,30 +26,37 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetai
 class UserSpec extends BaseJsonFormattersSpec with FixedClock {
   import UserSpec._
 
-  "User JsonFormatters" when {
-
-    "given a User" should {
-      "produce Json" in {
-        testToJsonValues[User](example)(
-          jsonObject.fields.toSeq: _*
-        )
-      }
-
-      "read json" in {
-        testFromJson[User](UserSpec.jsonText)(example)
-      }
-
-      "read full json" in {
-        testFromJson[User](fullJsonText)(fullExample)
-      }
-
-      "produce full json" in {
-        Json.toJson(fullExample) shouldBe Json.parse(fullJsonText)
-      }
+  "User" should {
+    "produce Json" in {
+      testToJsonValues[User](example)(
+        jsonObject.fields.toSeq: _*
+      )
     }
 
-    // TODO test displayName
-    // TODO test hasVerifiedMfa
+    "read json" in {
+      testFromJson[User](UserSpec.jsonText)(example)
+    }
+
+    "read full json" in {
+      testFromJson[User](fullJsonText)(fullExample)
+    }
+
+    "produce full json" in {
+      Json.toJson(fullExample) shouldBe Json.parse(fullJsonText)
+    }
+
+    "show displayName" in {
+      example.displayedName shouldBe "Bob Bobbins"
+    }
+
+    "not verified when no mfa is verified" in {
+      example.hasVerifiedMfa shouldBe false
+    }
+
+    "verified when mfa is verified" in {
+      fullExample.hasVerifiedMfa shouldBe true
+    }
+
   }
 
   val fullExample = example.copy(

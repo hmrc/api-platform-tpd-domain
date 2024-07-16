@@ -18,7 +18,14 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
 
-sealed trait MfaType
+sealed trait MfaType {
+  def asText(): String = {
+    this match {
+      case MfaType.AUTHENTICATOR_APP => "Authenticator app"
+      case MfaType.SMS => "Text message"
+    }
+  }
+}
 
 object MfaType {
   import play.api.libs.json.Format

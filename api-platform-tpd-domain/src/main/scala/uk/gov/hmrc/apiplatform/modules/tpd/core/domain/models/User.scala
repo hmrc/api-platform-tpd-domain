@@ -38,7 +38,9 @@ case class User(
     nonce: Option[String] = None,
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,
     userId: UserId
-  )
+  ){
+  lazy val displayedName: String = s"$firstName $lastName"
+}
 
 object User extends EnvReads with EnvWrites {
 

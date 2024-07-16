@@ -20,7 +20,11 @@ import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
 
-sealed trait EmailTopic
+sealed trait EmailTopic{
+  lazy val displayOrder = EmailTopic.displayOrder(this)
+  lazy val displayName  = EmailTopic.displayName(this)
+  lazy val description  = EmailTopic.description(this)
+}
 
 object EmailTopic {
 
@@ -33,6 +37,28 @@ object EmailTopic {
   case object RELEASE_SCHEDULES extends EmailTopic
 
   case object EVENT_INVITES extends EmailTopic
+
+
+  def displayOrder(et: EmailTopic): Byte = et match {
+    case BUSINESS_AND_POLICY => 1
+    case TECHNICAL           => 2
+    case RELEASE_SCHEDULES   => 3
+    case EVENT_INVITES       => Byte.MaxValue
+  }
+
+  def displayName(et: EmailTopic): String = et match {
+    case BUSINESS_AND_POLICY => "Business and policy"
+    case TECHNICAL           => "Technical"
+    case RELEASE_SCHEDULES   => "Release schedules"
+    case EVENT_INVITES       => "Event invites"
+  }
+
+  def description(et: EmailTopic): String = et match {
+    case BUSINESS_AND_POLICY => "Policy compliance, legislative changes and business guidance support"
+    case TECHNICAL           => "Specifications, service guides, bug fixes and known errors"
+    case RELEASE_SCHEDULES   => "Notifications about planned releases and outages"
+    case EVENT_INVITES       => "Get invites to knowledge share events and user research opportunities"
+  }
 
   def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString() == text.toUpperCase)
 

@@ -55,5 +55,5 @@ object SessionCreateRequestSpec extends FixedClock {
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","password":"pwd123","mfaMandatedForUser":true}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","mfaMandatedForUser":true}"""
 }

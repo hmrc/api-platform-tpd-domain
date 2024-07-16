@@ -36,7 +36,7 @@ class RegistrationRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[RegistrationRequest](s"""{"email":"${LaxEmailAddressData.emailA.text}","password":"pwd123","firstName":"Bob","lastName":"Bobbins"}""")(example)
+        testFromJson[RegistrationRequest](s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","firstName":"Bob","lastName":"Bobbins"}""")(example)
       }
     }
   }

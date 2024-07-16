@@ -34,7 +34,7 @@ class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[PasswordCheckRequest](s"""{"email":"${LaxEmailAddressData.emailA.text}","password":"pwd123"}""")(example)
+        testFromJson[PasswordCheckRequest](s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123"}""")(example)
       }
     }
   }

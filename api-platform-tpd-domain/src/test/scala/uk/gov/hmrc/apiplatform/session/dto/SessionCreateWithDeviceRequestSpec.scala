@@ -60,6 +60,6 @@ object SessionCreateWithDeviceRequestSpec extends FixedClock {
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","password":"pwd123","mfaMandatedForUser":true,"deviceSessionId":"$devSesIdText"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","mfaMandatedForUser":true,"deviceSessionId":"$devSesIdText"}"""
 
 }

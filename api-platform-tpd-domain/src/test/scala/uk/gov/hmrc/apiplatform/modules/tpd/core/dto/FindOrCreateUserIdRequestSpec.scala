@@ -33,7 +33,7 @@ class FindOrCreateUserIdRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[FindOrCreateUserIdRequest](s"""{"email":"${LaxEmailAddressData.emailA.text}"}""")(example)
+        testFromJson[FindOrCreateUserIdRequest](s"""{"email":"${LaxEmailAddressData.emailA}"}""")(example)
       }
     }
   }

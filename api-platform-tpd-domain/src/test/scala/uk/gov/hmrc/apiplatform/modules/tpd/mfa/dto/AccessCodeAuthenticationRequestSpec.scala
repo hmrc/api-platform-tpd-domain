@@ -26,7 +26,7 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto.AccessCodeAuthenticationReque
 class AccessCodeAuthenticationRequestSpec extends BaseJsonFormattersSpec {
   private val example = AccessCodeAuthenticationRequest(email = LaxEmailAddressData.emailA, accessCode = "123456", nonce = "aNonce", mfaId = MfaId.random)
 
-  private val jsonText = s"""{"email":"${example.email.text}","accessCode":"123456","nonce":"aNonce","mfaId":"${example.mfaId.toString()}"}"""
+  private val jsonText = s"""{"email":"${example.email}","accessCode":"123456","nonce":"aNonce","mfaId":"${example.mfaId.toString()}"}"""
 
   "AccessCodeAuthenticationRequest JsonFormatters" when {
 

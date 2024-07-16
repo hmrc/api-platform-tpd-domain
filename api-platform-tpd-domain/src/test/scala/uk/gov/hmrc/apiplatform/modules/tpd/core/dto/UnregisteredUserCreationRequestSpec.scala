@@ -33,7 +33,7 @@ class UnregisteredUserCreationRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[UnregisteredUserCreationRequest](s"""{"email":"${LaxEmailAddressData.emailA.text}"}""")(example)
+        testFromJson[UnregisteredUserCreationRequest](s"""{"email":"${LaxEmailAddressData.emailA}"}""")(example)
       }
     }
   }

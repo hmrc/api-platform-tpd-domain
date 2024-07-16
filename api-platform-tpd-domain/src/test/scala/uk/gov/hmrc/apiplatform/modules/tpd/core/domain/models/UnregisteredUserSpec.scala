@@ -35,7 +35,7 @@ class UnregisteredUserSpec extends BaseJsonFormattersSpec with FixedClock {
       }
 
       "read json" in {
-        testFromJson[UnregisteredUser](s"""{"email":"${LaxEmailAddressData.emailA.text}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
+        testFromJson[UnregisteredUser](s"""{"email":"${LaxEmailAddressData.emailA}","creationTime":"$nowAsText","userId":"$userId"}""")(example)
       }
     }
   }

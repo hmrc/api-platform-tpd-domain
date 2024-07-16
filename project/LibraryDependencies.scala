@@ -1,7 +1,7 @@
 import sbt._
 
 object LibraryDependencies {
-    lazy val commonDomainVersion = "0.13.0"
+    lazy val commonDomainVersion = "0.14.0"
 
   
   lazy val tpdDomainDeps = compileDependencies ++ testDependencies.map(_ % "test")

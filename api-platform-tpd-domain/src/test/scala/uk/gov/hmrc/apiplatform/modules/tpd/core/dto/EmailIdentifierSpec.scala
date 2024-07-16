@@ -33,7 +33,7 @@ class EmailIdentifierSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[EmailIdentifier](s"""{"email":"${LaxEmailAddressData.emailA.text}"}""")(example)
+        testFromJson[EmailIdentifier](s"""{"email":"${LaxEmailAddressData.emailA}"}""")(example)
       }
 
       "parse text correctly" in {

@@ -48,15 +48,15 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock {
       }
     }
 
-    //TODO test displayName
-    //TODO test hasVerifiedMfa
+    // TODO test displayName
+    // TODO test hasVerifiedMfa
   }
 
   val fullExample = example.copy(
     mfaDetails = List(
       SmsMfaDetail(
         id = mfaId,
-        createdOn = instant,
+        createdOn = Instants.aYearAgo,
         name = "xxx",
         mobileNumber = "07999123456",
         verified = true
@@ -66,7 +66,7 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock {
   )
 
   val fullJsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"$nowAsText","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
 
 }
 
@@ -78,7 +78,7 @@ object UserSpec extends FixedClock {
     email = LaxEmailAddressData.emailA,
     firstName = "Bob",
     lastName = "Bobbins",
-    registrationTime = instant,
+    registrationTime = Instants.aYearAgo,
     lastModified = instant,
     verified = true,
     accountSetup = None,
@@ -94,7 +94,7 @@ object UserSpec extends FixedClock {
     ("email"            -> JsString(LaxEmailAddressData.emailA.text)),
     ("firstName"        -> JsString("Bob")),
     ("lastName"         -> JsString("Bobbins")),
-    ("registrationTime" -> JsString(nowAsText)),
+    ("registrationTime" -> JsString(Texts.aYearAgo)),
     ("lastModified"     -> JsString(nowAsText)),
     ("verified"         -> JsBoolean(true)),
     ("organisation"     -> JsString("Bobbers")),
@@ -103,6 +103,6 @@ object UserSpec extends FixedClock {
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA.text}","firstName":"Bob","lastName":"Bobbins","registrationTime":"$nowAsText","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
 
 }

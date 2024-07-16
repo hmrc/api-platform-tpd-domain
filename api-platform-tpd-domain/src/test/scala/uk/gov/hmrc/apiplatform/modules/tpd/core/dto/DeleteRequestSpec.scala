@@ -36,7 +36,7 @@ class DeleteRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[DeleteRequest](s"""{"gatekeeperUserId":"123","emailAddress":"${LaxEmailAddressData.emailA.text}"}""")(example)
+        testFromJson[DeleteRequest](s"""{"gatekeeperUserId":"123","emailAddress":"${LaxEmailAddressData.emailA}"}""")(example)
       }
     }
   }

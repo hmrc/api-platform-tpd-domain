@@ -41,6 +41,7 @@ class UserSessionSpec extends BaseJsonFormattersSpec with FixedClock {
 }
 
 object UserSessionSpec extends FixedClock {
+
   val example = UserSession(
     sessionId = UserSessionId.random,
     loggedInState = LoggedInState.LOGGED_IN,
@@ -48,9 +49,9 @@ object UserSessionSpec extends FixedClock {
   )
 
   val jsonObject = JsObject(Seq(
-    ("sessionId"           -> JsString(example.sessionId.toString())),
-    ("loggedInState"       -> JsString("LOGGED_IN")),
-    ("developer"           -> UserSpec.jsonObject),
+    ("sessionId"     -> JsString(example.sessionId.toString())),
+    ("loggedInState" -> JsString("LOGGED_IN")),
+    ("developer"     -> UserSpec.jsonObject)
   ))
 
   val jsonText =

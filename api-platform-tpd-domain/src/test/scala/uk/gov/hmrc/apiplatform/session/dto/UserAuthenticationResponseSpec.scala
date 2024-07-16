@@ -41,6 +41,7 @@ class UserAuthenticationResponseSpec extends BaseJsonFormattersSpec with FixedCl
 }
 
 object UserAuthenticationResponseSpec extends FixedClock {
+
   val example = UserAuthenticationResponse(
     accessCodeRequired = true,
     mfaEnabled = true,
@@ -49,10 +50,10 @@ object UserAuthenticationResponseSpec extends FixedClock {
   )
 
   val jsonObject = JsObject(Seq(
-    ("accessCodeRequired"  -> JsBoolean(true)),
-    ("mfaEnabled"  -> JsBoolean(true)),
-    ("nonce"       -> JsString("aTextValue")),
-    ("session"           -> UserSessionSpec.jsonObject),
+    ("accessCodeRequired" -> JsBoolean(true)),
+    ("mfaEnabled"         -> JsBoolean(true)),
+    ("nonce"              -> JsString("aTextValue")),
+    ("session"            -> UserSessionSpec.jsonObject)
   ))
 
   val jsonText =

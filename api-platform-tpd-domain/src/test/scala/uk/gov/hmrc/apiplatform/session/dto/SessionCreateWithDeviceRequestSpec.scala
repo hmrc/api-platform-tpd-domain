@@ -18,8 +18,8 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 
 class SessionCreateWithDeviceRequestSpec extends BaseJsonFormattersSpec with FixedClock {
@@ -42,6 +42,7 @@ class SessionCreateWithDeviceRequestSpec extends BaseJsonFormattersSpec with Fix
 }
 
 object SessionCreateWithDeviceRequestSpec extends FixedClock {
+
   val example = SessionCreateWithDeviceRequest(
     email = LaxEmailAddressData.emailA,
     password = "pwd123",
@@ -52,10 +53,10 @@ object SessionCreateWithDeviceRequestSpec extends FixedClock {
   val devSesIdText = example.deviceSessionId.map(_.toString()).get
 
   val jsonObject = JsObject(Seq(
-    ("email"           -> JsString(LaxEmailAddressData.emailA.text)),
-    ("password"       -> JsString("pwd123")),
-    ("mfaMandatedForUser"           ->JsBoolean(true)),
-    ("deviceSessionId" -> JsString(devSesIdText))
+    ("email"              -> JsString(LaxEmailAddressData.emailA.text)),
+    ("password"           -> JsString("pwd123")),
+    ("mfaMandatedForUser" -> JsBoolean(true)),
+    ("deviceSessionId"    -> JsString(devSesIdText))
   ))
 
   val jsonText =

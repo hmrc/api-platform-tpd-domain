@@ -20,7 +20,7 @@ import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
 
-sealed trait EmailTopic{
+sealed trait EmailTopic {
   lazy val displayOrder = EmailTopic.displayOrder(this)
   lazy val displayName  = EmailTopic.displayName(this)
   lazy val description  = EmailTopic.description(this)
@@ -37,7 +37,6 @@ object EmailTopic {
   case object RELEASE_SCHEDULES extends EmailTopic
 
   case object EVENT_INVITES extends EmailTopic
-
 
   def displayOrder(et: EmailTopic): Byte = et match {
     case BUSINESS_AND_POLICY => 1

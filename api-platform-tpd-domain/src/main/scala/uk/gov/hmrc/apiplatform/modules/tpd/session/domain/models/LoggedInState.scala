@@ -20,15 +20,14 @@ import play.api.libs.json.Format
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
 
-sealed trait LoggedInState{
-  lazy val  isLoggedIn: Boolean                = this == LoggedInState.LOGGED_IN
-  lazy val  isPartLoggedInEnablingMFA: Boolean = this == LoggedInState.PART_LOGGED_IN_ENABLING_MFA
+sealed trait LoggedInState {
+  lazy val isLoggedIn: Boolean                = this == LoggedInState.LOGGED_IN
+  lazy val isPartLoggedInEnablingMFA: Boolean = this == LoggedInState.PART_LOGGED_IN_ENABLING_MFA
 }
 
 object LoggedInState {
   case object LOGGED_IN                   extends LoggedInState
   case object PART_LOGGED_IN_ENABLING_MFA extends LoggedInState
-
 
   val values: Set[LoggedInState] = Set(LOGGED_IN, PART_LOGGED_IN_ENABLING_MFA)
 

@@ -60,5 +60,4 @@ commands ++= Seq(
   Command.command("pre-commit") { state => "clean" :: "scalafmtAll" :: "scalafixAll" :: "coverage" :: "run-all-tests" :: "coverageAggregate" :: "coverageOff" :: state }
 )
 
-
 Global / bloopAggregateSourceDependencies := true

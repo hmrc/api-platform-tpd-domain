@@ -29,8 +29,6 @@ lazy val apiPlatformTpdDomain = Project("api-platform-tpd-domain", file("api-pla
   .settings(
     libraryDependencies ++= LibraryDependencies.tpdDomainDeps,
     ScoverageSettings(),
-    // Move aggregated report to top level for jenkins build
-    ScoverageKeys.coverageDataDir := baseDirectory.value / ".." / "target" / s"scala-${scalaVersion.value}",
     Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT"),
 
     Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.common.domain.models
+package uk.gov.hmrc.apiplatform.modules.common.test.data
+
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
 object UserIdData {
   val userIdA = UserId.random

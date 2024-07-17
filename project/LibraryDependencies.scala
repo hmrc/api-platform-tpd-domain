@@ -1,12 +1,11 @@
 import sbt._
 
 object LibraryDependencies {
-    lazy val commonDomainVersion = "0.14.0"
-
+  lazy val commonDomainVersion = "0.14.0"
   
-  lazy val tpdDomainDeps = compileDependencies ++ testDependencies.map(_ % "test")
+  lazy val tpdDomainDeps = compileDependencies ++ testCommonDependencies.map(_ % "test") ++ testDependencies.map(_ % "test")
 
-  lazy val tpdTestDomainDeps = compileDependencies ++ testDependencies
+  lazy val tpdTestDomainDeps = compileDependencies ++ testCommonDependencies
   
   lazy val compileDependencies = Seq(
     "uk.gov.hmrc"             %% "api-platform-common-domain"     % commonDomainVersion,
@@ -15,10 +14,9 @@ object LibraryDependencies {
     "org.typelevel"           %% "cats-core"                      % "2.10.0"
   )
 
-  lazy val testDependencies = Seq(
+  lazy val testCommonDependencies = Seq (
     "uk.gov.hmrc"             %% "api-platform-test-common-domain" % commonDomainVersion,
-    "com.vladsch.flexmark"     % "flexmark-all"                    % "0.62.2",
-    "org.mockito"             %% "mockito-scala-scalatest"         % "1.17.29",
-    "org.scalatest"           %% "scalatest"                       % "3.2.17"
   )
+
+  lazy val testDependencies = Seq[ModuleID]()
 }

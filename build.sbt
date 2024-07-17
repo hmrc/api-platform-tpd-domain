@@ -31,10 +31,10 @@ lazy val apiPlatformTpdDomain = Project("api-platform-tpd-domain", file("api-pla
     ScoverageSettings(),
     Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT"),
 
-    Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
-    Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "test" / "scala",
+    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
+    // Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "test" / "scala",
     
-    Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
+    // Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
   )
   .disablePlugins(JUnitXmlReportPlugin)
 
@@ -45,8 +45,8 @@ lazy val apiPlatformTestTpdDomain = Project("api-platform-test-tpd-domain", file
   .settings(
     libraryDependencies ++= LibraryDependencies.tpdTestDomainDeps,
     ScoverageKeys.coverageEnabled := false,
-    Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
-    Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
+    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
+    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
   )
   .disablePlugins(JUnitXmlReportPlugin)
 

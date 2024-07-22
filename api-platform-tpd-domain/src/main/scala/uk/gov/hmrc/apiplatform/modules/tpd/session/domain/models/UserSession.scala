@@ -22,9 +22,16 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.User
 
 //TODO - rework
 
-case class UserSession(sessionId: UserSessionId, loggedInState: LoggedInState, developer: User)
+case class UserSession(sessionId: UserSessionId, loggedInState: LoggedInState, developer: User) {
+
+  lazy val loggedInName: Option[String] =
+    if (loggedInState.isLoggedIn) {
+      Some(developer.displayedName)
+    } else {
+      None
+    }
+}
 
 object UserSession {
-
   implicit val format: OFormat[UserSession] = Json.format[UserSession]
 }

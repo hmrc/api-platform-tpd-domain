@@ -20,8 +20,6 @@ import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.User
 
-//TODO - rework
-
 case class UserSession(sessionId: UserSessionId, loggedInState: LoggedInState, developer: User) {
 
   lazy val loggedInName: Option[String] =

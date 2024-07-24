@@ -23,4 +23,3 @@ case class VerifyMfaCodeRequest(code: String)
 object VerifyMfaCodeRequest {
   implicit val format: OFormat[VerifyMfaCodeRequest] = Json.format[VerifyMfaCodeRequest]
 }
-

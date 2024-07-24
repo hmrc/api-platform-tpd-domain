@@ -18,9 +18,8 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import play.api.libs.json._
 
-case class RemoveAllMfaRequest (removedBy: String)
+case class RemoveAllMfaRequest(removedBy: String)
 
 object RemoveAllMfaRequest {
   implicit val RemoveMfaRequestWrites: Format[RemoveAllMfaRequest] = Json.format[RemoveAllMfaRequest]
 }
-

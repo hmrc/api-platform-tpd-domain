@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserSpec
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UserPaginatedResponse
 
 class UserPaginatedResponseSpec extends BaseJsonFormattersSpec {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, LaxEmailAddressData}
 import uk.gov.hmrc.apiplatform.modules.common.utils._

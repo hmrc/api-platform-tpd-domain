@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
+package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json._
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models.UserSessionSpec
 import uk.gov.hmrc.apiplatform.modules.tpd.session.dto.UserAuthenticationResponse
 
 class UserAuthenticationResponseSpec extends BaseJsonFormattersSpec with FixedClock {

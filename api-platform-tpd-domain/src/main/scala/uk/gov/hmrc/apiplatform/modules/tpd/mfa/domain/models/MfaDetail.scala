@@ -39,15 +39,19 @@ object MfaDetail {
     .format
 }
 
-case class AuthenticatorAppMfaDetail(id: MfaId, name: String, createdOn: Instant, verified: Boolean = false)
-    extends MfaDetail {
+case class AuthenticatorAppMfaDetail(
+    id: MfaId = MfaId.random,
+    name: String,
+    createdOn: Instant,
+    verified: Boolean = false
+  ) extends MfaDetail {
   override val mfaType: MfaType = MfaType.AUTHENTICATOR_APP
 }
 
 case class SmsMfaDetail(
-    override val id: MfaId = MfaId.random,
-    override val name: String,
-    override val createdOn: Instant,
+    id: MfaId = MfaId.random,
+    name: String,
+    createdOn: Instant,
     mobileNumber: String,
     verified: Boolean = false
   ) extends MfaDetail {

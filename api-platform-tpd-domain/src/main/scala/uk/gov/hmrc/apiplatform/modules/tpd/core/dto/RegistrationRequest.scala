@@ -20,7 +20,7 @@ import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 
-case class RegistrationRequest(email: LaxEmailAddress, password: String, firstName: String, lastName: String, organisation: Option[String] = None)
+case class RegistrationRequest(email: LaxEmailAddress, password: String, firstName: String, lastName: String)
 
 object RegistrationRequest {
   implicit val format: OFormat[RegistrationRequest] = Json.format[RegistrationRequest]

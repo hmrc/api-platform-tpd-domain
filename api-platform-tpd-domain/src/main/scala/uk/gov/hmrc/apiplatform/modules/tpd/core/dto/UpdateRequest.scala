@@ -20,7 +20,7 @@ import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.AccountSetupRequest
 
-case class UpdateRequest(firstName: String, lastName: String, organisation: Option[String] = None, accountSetup: Option[AccountSetupRequest] = None)
+case class UpdateRequest(firstName: String, lastName: String, accountSetup: Option[AccountSetupRequest] = None)
 
 object UpdateRequest {
   implicit val format: OFormat[UpdateRequest] = Json.format[UpdateRequest]

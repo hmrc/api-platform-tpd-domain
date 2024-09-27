@@ -31,7 +31,6 @@ trait UserBuilder extends FixedClock {
       emailAddress: LaxEmailAddress = "something@example.com".toLaxEmail,
       firstName: String = "John",
       lastName: String = "Doe",
-      organisation: Option[String] = None,
       mfaDetails: List[MfaDetail] = List.empty,
       emailPreferences: EmailPreferences = EmailPreferences.noPreferences
     ): User = {
@@ -43,7 +42,6 @@ trait UserBuilder extends FixedClock {
       instant,
       true,
       accountSetup = None,
-      organisation,
       mfaDetails,
       nonce = None,
       emailPreferences,
@@ -59,7 +57,6 @@ trait UserBuilder extends FixedClock {
       emailAddress: LaxEmailAddress = "something@example.com".toLaxEmail,
       firstName: String = "John",
       lastName: String = "Doe",
-      organisation: Option[String] = None,
       mfaDetails: List[MfaDetail] = List.empty,
       emailPreferences: EmailPreferences = EmailPreferences.noPreferences
     ): User = {
@@ -71,7 +68,6 @@ trait UserBuilder extends FixedClock {
       instant,
       true,
       accountSetup = None,
-      organisation,
       mfaDetails,
       nonce = None,
       emailPreferences,

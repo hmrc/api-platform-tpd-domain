@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.RegistrationRequest
 class RegistrationRequestSpec extends BaseJsonFormattersSpec {
 
   "RegistrationRequest JsonFormatters" when {
-    val example = RegistrationRequest(email = LaxEmailAddressData.emailA, password = "pwd123", firstName = "Bob", lastName = "Bobbins", organisation = None)
+    val example = RegistrationRequest(email = LaxEmailAddressData.emailA, password = "pwd123", firstName = "Bob", lastName = "Bobbins")
 
     "given an RegistrationRequest" should {
       "produce Json" in {

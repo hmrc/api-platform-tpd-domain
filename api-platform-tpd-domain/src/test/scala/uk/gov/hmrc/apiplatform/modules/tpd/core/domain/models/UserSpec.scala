@@ -73,7 +73,7 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock {
   )
 
   val fullJsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
 
 }
 
@@ -89,7 +89,6 @@ object UserSpec extends FixedClock {
     lastModified = instant,
     verified = true,
     accountSetup = None,
-    organisation = Some("Bobbers"),
     mfaDetails = List.empty,
     nonce = None,
     emailPreferences = EmailPreferences.noPreferences,
@@ -104,12 +103,11 @@ object UserSpec extends FixedClock {
     ("registrationTime" -> JsString(Texts.aYearAgo)),
     ("lastModified"     -> JsString(nowAsText)),
     ("verified"         -> JsBoolean(true)),
-    ("organisation"     -> JsString("Bobbers")),
     ("mfaDetails"       -> JsArray.empty),
     ("emailPreferences" -> EmailPreferencesSpec.jsonObject)
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"organisation":"Bobbers","mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
+    s"""{"email":"${LaxEmailAddressData.emailA}","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[],"emailPreferences":{"interests":[],"topics":[]},"userId":"$userId"}"""
 
 }

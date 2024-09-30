@@ -32,7 +32,6 @@ case class User(
     lastModified: Instant,
     verified: Boolean,
     accountSetup: Option[AccountSetup] = None,
-    organisation: Option[String] = None,
     mfaDetails: List[MfaDetail],
     nonce: Option[String] = None,
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,

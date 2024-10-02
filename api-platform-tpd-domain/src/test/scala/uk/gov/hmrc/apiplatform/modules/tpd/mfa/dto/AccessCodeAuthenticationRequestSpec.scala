@@ -18,13 +18,13 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto.AccessCodeAuthenticationRequest
 
-class AccessCodeAuthenticationRequestSpec extends BaseJsonFormattersSpec {
-  private val example = AccessCodeAuthenticationRequest(email = LaxEmailAddressData.emailA, accessCode = "123456", nonce = "aNonce", mfaId = MfaId.random)
+class AccessCodeAuthenticationRequestSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
+  private val example = AccessCodeAuthenticationRequest(email = emailOne, accessCode = "123456", nonce = "aNonce", mfaId = MfaId.random)
 
   private val jsonText = s"""{"email":"${example.email}","accessCode":"123456","nonce":"aNonce","mfaId":"${example.mfaId.toString()}"}"""
 

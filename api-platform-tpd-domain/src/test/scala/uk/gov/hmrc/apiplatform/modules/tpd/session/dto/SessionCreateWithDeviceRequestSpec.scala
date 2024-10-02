@@ -18,7 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 
@@ -41,10 +41,10 @@ class SessionCreateWithDeviceRequestSpec extends BaseJsonFormattersSpec with Fix
   }
 }
 
-object SessionCreateWithDeviceRequestSpec extends FixedClock {
+object SessionCreateWithDeviceRequestSpec extends FixedClock with LaxEmailAddressFixtures {
 
   val example = SessionCreateWithDeviceRequest(
-    email = LaxEmailAddressData.emailA,
+    email = emailOne,
     password = "pwd123",
     mfaMandatedForUser = Some(true),
     deviceSessionId = Some(DeviceSessionId.random)
@@ -53,13 +53,13 @@ object SessionCreateWithDeviceRequestSpec extends FixedClock {
   val devSesIdText = example.deviceSessionId.map(_.toString()).get
 
   val jsonObject = JsObject(Seq(
-    ("email"              -> JsString(LaxEmailAddressData.emailA.text)),
+    ("email"              -> JsString(emailOne.text)),
     ("password"           -> JsString("pwd123")),
     ("mfaMandatedForUser" -> JsBoolean(true)),
     ("deviceSessionId"    -> JsString(devSesIdText))
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","mfaMandatedForUser":true,"deviceSessionId":"$devSesIdText"}"""
+    s"""{"email":"$emailOne","password":"pwd123","mfaMandatedForUser":true,"deviceSessionId":"$devSesIdText"}"""
 
 }

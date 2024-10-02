@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.UnregisteredUserCreationRequest
 
-class UnregisteredUserCreationRequestSpec extends BaseJsonFormattersSpec {
+class UnregisteredUserCreationRequestSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
 
   "UnregisteredUserCreationRequest JsonFormatters" when {
-    val example = UnregisteredUserCreationRequest(email = LaxEmailAddressData.emailA)
+    val example = UnregisteredUserCreationRequest(email = emailOne)
 
     "given an UnregisteredUserCreationRequest" should {
       "produce Json" in {
@@ -33,7 +33,7 @@ class UnregisteredUserCreationRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[UnregisteredUserCreationRequest](s"""{"email":"${LaxEmailAddressData.emailA}"}""")(example)
+        testFromJson[UnregisteredUserCreationRequest](s"""{"email":"$emailOne"}""")(example)
       }
     }
   }

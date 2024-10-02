@@ -18,7 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 
 class SessionCreateRequestSpec extends BaseJsonFormattersSpec with FixedClock {
@@ -40,20 +40,20 @@ class SessionCreateRequestSpec extends BaseJsonFormattersSpec with FixedClock {
   }
 }
 
-object SessionCreateRequestSpec extends FixedClock {
+object SessionCreateRequestSpec extends FixedClock with LaxEmailAddressFixtures {
 
   val example = SessionCreateRequest(
-    email = LaxEmailAddressData.emailA,
+    email = emailOne,
     password = "pwd123",
     mfaMandatedForUser = Some(true)
   )
 
   val jsonObject = JsObject(Seq(
-    ("email"              -> JsString(LaxEmailAddressData.emailA.text)),
+    ("email"              -> JsString(emailOne.text)),
     ("password"           -> JsString("pwd123")),
     ("mfaMandatedForUser" -> JsBoolean(true))
   ))
 
   val jsonText =
-    s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","mfaMandatedForUser":true}"""
+    s"""{"email":"$emailOne","password":"pwd123","mfaMandatedForUser":true}"""
 }

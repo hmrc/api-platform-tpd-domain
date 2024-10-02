@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, LaxEmailAddressData}
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, LaxEmailAddressFixtures}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.EmailIdentifier
 
-class EmailIdentifierSpec extends BaseJsonFormattersSpec {
+class EmailIdentifierSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
 
   "EmailIdentifier JsonFormatters" when {
-    val example = EmailIdentifier(email = LaxEmailAddressData.emailA)
+    val example = EmailIdentifier(email = emailOne)
 
     "given an EmailIdentifier" should {
       "produce Json" in {
@@ -33,7 +33,7 @@ class EmailIdentifierSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[EmailIdentifier](s"""{"email":"${LaxEmailAddressData.emailA}"}""")(example)
+        testFromJson[EmailIdentifier](s"""{"email":"$emailOne"}""")(example)
       }
 
       "parse text correctly" in {

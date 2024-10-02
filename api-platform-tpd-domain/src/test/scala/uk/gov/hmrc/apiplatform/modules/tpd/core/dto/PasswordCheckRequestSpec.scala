@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.PasswordCheckRequest
 
-class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
+class PasswordCheckRequestSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
 
   "PasswordCheckRequest JsonFormatters" when {
-    val example = PasswordCheckRequest(email = LaxEmailAddressData.emailA, password = "pwd123")
+    val example = PasswordCheckRequest(email = emailOne, password = "pwd123")
 
     "given an PasswordCheckRequest" should {
       "produce Json" in {
@@ -34,7 +34,7 @@ class PasswordCheckRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[PasswordCheckRequest](s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123"}""")(example)
+        testFromJson[PasswordCheckRequest](s"""{"email":"$emailOne","password":"pwd123"}""")(example)
       }
     }
   }

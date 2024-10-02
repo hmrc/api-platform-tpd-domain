@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.RegistrationRequest
 
-class RegistrationRequestSpec extends BaseJsonFormattersSpec {
+class RegistrationRequestSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
 
   "RegistrationRequest JsonFormatters" when {
-    val example = RegistrationRequest(email = LaxEmailAddressData.emailA, password = "pwd123", firstName = "Bob", lastName = "Bobbins")
+    val example = RegistrationRequest(email = emailOne, password = "pwd123", firstName = "Bob", lastName = "Bobbins")
 
     "given an RegistrationRequest" should {
       "produce Json" in {
@@ -36,7 +36,7 @@ class RegistrationRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[RegistrationRequest](s"""{"email":"${LaxEmailAddressData.emailA}","password":"pwd123","firstName":"Bob","lastName":"Bobbins"}""")(example)
+        testFromJson[RegistrationRequest](s"""{"email":"$emailOne","password":"pwd123","firstName":"Bob","lastName":"Bobbins"}""")(example)
       }
     }
   }

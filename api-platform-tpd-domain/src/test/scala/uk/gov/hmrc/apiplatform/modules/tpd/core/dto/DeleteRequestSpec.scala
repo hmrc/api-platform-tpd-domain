@@ -18,14 +18,14 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json._
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressData
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtures
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.DeleteRequest
 
-class DeleteRequestSpec extends BaseJsonFormattersSpec {
+class DeleteRequestSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {
 
   "DeleteRequest JsonFormatters" when {
-    val example = DeleteRequest(gatekeeperUserId = Some("123"), emailAddress = LaxEmailAddressData.emailA)
+    val example = DeleteRequest(gatekeeperUserId = Some("123"), emailAddress = emailOne)
 
     "given a DeleteRequest" should {
       "produce Json" in {
@@ -36,7 +36,7 @@ class DeleteRequestSpec extends BaseJsonFormattersSpec {
       }
 
       "read json" in {
-        testFromJson[DeleteRequest](s"""{"gatekeeperUserId":"123","emailAddress":"${LaxEmailAddressData.emailA}"}""")(example)
+        testFromJson[DeleteRequest](s"""{"gatekeeperUserId":"123","emailAddress":"$emailOne"}""")(example)
       }
     }
   }

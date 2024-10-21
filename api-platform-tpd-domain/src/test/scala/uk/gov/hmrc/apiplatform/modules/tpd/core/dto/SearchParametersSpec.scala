@@ -17,23 +17,23 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.SearchParameters
 
 class SearchParametersSpec extends BaseJsonFormattersSpec {
 
   "SearchParameters JsonFormatters" when {
-    val example = SearchParameters(emailFilter = Some("a@b.com"), status = Some("OPEN"))
+    val example = SearchParameters(emailFilter = Some("a@b.com"), status = Some("OPEN"), textFilter = Some("*Dave*"))
 
     "given an SearchParameters" should {
       "produce Json" in {
         testToJson[SearchParameters](example)(
           ("emailFilter" -> "a@b.com"),
+          ("textFilter"  -> "*Dave*"),
           ("status"      -> "OPEN")
         )
       }
 
       "read json" in {
-        testFromJson[SearchParameters]("""{"emailFilter":"a@b.com","status":"OPEN"}""")(example)
+        testFromJson[SearchParameters]("""{"emailFilter":"a@b.com","status":"OPEN", "textFilter": "*Dave*"}""")(example)
       }
     }
   }

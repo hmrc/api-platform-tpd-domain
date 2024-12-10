@@ -35,7 +35,9 @@ case class User(
     mfaDetails: List[MfaDetail],
     nonce: Option[String] = None,
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,
-    userId: UserId
+    userId: UserId,
+    failedLogins: Int = 0,
+    lastLogin: Option[Instant] = None
   ) {
   lazy val displayedName: String   = s"$firstName $lastName"
   lazy val hasVerifiedMfa: Boolean = mfaDetails.exists(_.verified)
@@ -45,5 +47,5 @@ object User extends EnvReads with EnvWrites {
 
   implicit val dateTimeFormat: Format[Instant] = Format(DefaultInstantReads, DefaultInstantWrites)
 
-  implicit val format: OFormat[User] = Json.format[User]
+  implicit val format: OFormat[User] = Json.using[Json.WithDefaultValues].format[User]
 }

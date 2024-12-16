@@ -69,11 +69,13 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock with LaxEmailAddre
         verified = true
       )
     ),
-    emailPreferences = EmailPreferencesSpec.example
+    emailPreferences = EmailPreferencesSpec.example,
+    failedLogins = 2,
+    lastLogin = Some(Instants.aMonthAgo)
   )
 
   val fullJsonText =
-    s"""{"email":"$emailOne","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId"}"""
+    s"""{"email":"$emailOne","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId","failedLogins":2,"lastLogin":"${Texts.aMonthAgo}"}"""
 
 }
 
@@ -104,7 +106,8 @@ object UserSpec extends FixedClock with LaxEmailAddressFixtures {
     ("lastModified"     -> JsString(nowAsText)),
     ("verified"         -> JsBoolean(true)),
     ("mfaDetails"       -> JsArray.empty),
-    ("emailPreferences" -> EmailPreferencesSpec.jsonObject)
+    ("emailPreferences" -> EmailPreferencesSpec.jsonObject),
+    ("failedLogins"     -> JsNumber(0))
   ))
 
   val jsonText =

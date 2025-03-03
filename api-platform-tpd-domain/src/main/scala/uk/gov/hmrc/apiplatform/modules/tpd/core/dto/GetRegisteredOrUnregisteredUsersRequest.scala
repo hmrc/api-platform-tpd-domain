@@ -20,7 +20,7 @@ import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
-case class GetRegisteredOrUnregisteredUsersRequest(users: List[UserId])
+case class GetRegisteredOrUnregisteredUsersRequest(userIds: List[UserId])
 
 object GetRegisteredOrUnregisteredUsersRequest {
   implicit val format: OFormat[GetRegisteredOrUnregisteredUsersRequest] = Json.format[GetRegisteredOrUnregisteredUsersRequest]

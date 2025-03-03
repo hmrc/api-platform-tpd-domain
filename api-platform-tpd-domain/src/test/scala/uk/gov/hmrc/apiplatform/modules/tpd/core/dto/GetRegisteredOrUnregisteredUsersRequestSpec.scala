@@ -27,7 +27,7 @@ class GetRegisteredOrUnregisteredUsersRequestSpec extends BaseJsonFormattersSpec
     val userId1        = UserId.random
     val userId2        = UserId.random
     val exampleRequest = GetRegisteredOrUnregisteredUsersRequest(List(userId1, userId2))
-    val jsonText       = s"""{"users":["$userId1","$userId2"]}"""
+    val jsonText       = s"""{"userIds":["$userId1","$userId2"]}"""
 
     "given an GetRegisteredOrUnregisteredUserRequest" should {
       "produce Json" in {

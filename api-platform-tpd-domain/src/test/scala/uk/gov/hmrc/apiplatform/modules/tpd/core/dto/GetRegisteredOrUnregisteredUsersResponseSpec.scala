@@ -16,32 +16,27 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import play.api.libs.json.{JsBoolean, JsObject, JsString}
+import play.api.libs.json.Json
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 
-class GetRegisteredOrUnregisteredUserResponseSpec extends BaseJsonFormattersSpec {
+class GetRegisteredOrUnregisteredUsersResponseSpec extends BaseJsonFormattersSpec {
 
   "GetRegisteredOrUnregisteredUserResponse JsonFormatters" when {
-    val userId     = UserId.random
-    val email      = LaxEmailAddress("bob@example.com")
-    val example    = GetRegisteredOrUnregisteredUserResponse(userId, email, true)
-    val jsonObject = JsObject(Seq(
-      ("userId"       -> JsString(userId.toString())),
-      ("email"        -> JsString(email.text)),
-      ("isRegistered" -> JsBoolean(true))
-    ))
+    val userId          = UserId.random
+    val email           = LaxEmailAddress("bob@example.com")
+    val exampleUser     = RegisteredOrUnregisteredUser(userId, email, true)
+    val exampleResponse = GetRegisteredOrUnregisteredUsersResponse(List(exampleUser))
+    val jsonText        = s"""{"users":[{"userId":"$userId","email":"${email.text}","isRegistered":true}]}"""
 
     "given an GetRegisteredOrUnregisteredUserResponse" should {
       "produce Json" in {
-        testToJsonValues[GetRegisteredOrUnregisteredUserResponse](example)(
-          jsonObject.fields.toSeq: _*
-        )
+        Json.toJson(exampleResponse) shouldBe Json.parse(jsonText)
       }
 
       "read json" in {
-        testFromJson[GetRegisteredOrUnregisteredUserResponse](s"""{"userId":"$userId","email":"${email.text}","isRegistered":true}""")(example)
+        testFromJson[GetRegisteredOrUnregisteredUsersResponse](jsonText)(exampleResponse)
       }
     }
   }

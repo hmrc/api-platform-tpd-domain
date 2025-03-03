@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json.{Json, OFormat}
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
-case class GetRegisteredOrUnregisteredUserResponse(userId: UserId, email: LaxEmailAddress, isRegistered: Boolean)
+case class GetRegisteredOrUnregisteredUsersRequest(users: List[UserId])
 
-object GetRegisteredOrUnregisteredUserResponse {
-  implicit val format: OFormat[GetRegisteredOrUnregisteredUserResponse] = Json.format[GetRegisteredOrUnregisteredUserResponse]
+object GetRegisteredOrUnregisteredUsersRequest {
+  implicit val format: OFormat[GetRegisteredOrUnregisteredUsersRequest] = Json.format[GetRegisteredOrUnregisteredUsersRequest]
 }

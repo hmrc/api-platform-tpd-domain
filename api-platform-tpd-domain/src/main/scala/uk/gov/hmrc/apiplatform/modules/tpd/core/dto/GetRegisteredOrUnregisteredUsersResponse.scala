@@ -20,7 +20,7 @@ import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 
-case class RegisteredOrUnregisteredUser(userId: UserId, email: LaxEmailAddress, isRegistered: Boolean)
+case class RegisteredOrUnregisteredUser(userId: UserId, email: LaxEmailAddress, isRegistered: Boolean, isVerified: Boolean)
 
 object RegisteredOrUnregisteredUser {
   implicit val format: OFormat[RegisteredOrUnregisteredUser] = Json.format[RegisteredOrUnregisteredUser]

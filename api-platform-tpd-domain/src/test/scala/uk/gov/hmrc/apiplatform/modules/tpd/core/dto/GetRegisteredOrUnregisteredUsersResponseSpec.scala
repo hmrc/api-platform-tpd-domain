@@ -26,9 +26,9 @@ class GetRegisteredOrUnregisteredUsersResponseSpec extends BaseJsonFormattersSpe
   "GetRegisteredOrUnregisteredUserResponse JsonFormatters" when {
     val userId          = UserId.random
     val email           = LaxEmailAddress("bob@example.com")
-    val exampleUser     = RegisteredOrUnregisteredUser(userId, email, true)
+    val exampleUser     = RegisteredOrUnregisteredUser(userId, email, true, true)
     val exampleResponse = GetRegisteredOrUnregisteredUsersResponse(List(exampleUser))
-    val jsonText        = s"""{"users":[{"userId":"$userId","email":"${email.text}","isRegistered":true}]}"""
+    val jsonText        = s"""{"users":[{"userId":"$userId","email":"${email.text}","isRegistered":true,"isVerified":true}]}"""
 
     "given an GetRegisteredOrUnregisteredUserResponse" should {
       "produce Json" in {

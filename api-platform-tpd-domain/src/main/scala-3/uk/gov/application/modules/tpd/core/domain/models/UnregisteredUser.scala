@@ -25,5 +25,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, Us
 case class UnregisteredUser(email: LaxEmailAddress, creationTime: Instant, userId: UserId)
 
 object UnregisteredUser {
-  implicit val format: OFormat[UnregisteredUser] = Json.format[UnregisteredUser]
+  given OFormat[UnregisteredUser] = Json.format[UnregisteredUser]
 }

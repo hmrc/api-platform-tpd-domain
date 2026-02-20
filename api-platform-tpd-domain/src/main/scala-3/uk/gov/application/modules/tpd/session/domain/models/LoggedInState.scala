@@ -32,5 +32,5 @@ object LoggedInState {
   def apply(text: String): Option[LoggedInState] = LoggedInState.values.find(_.toString().equalsIgnoreCase(text)) // TODO: Ain't gonna work with enums - discuss with devs
   def unsafeApply(text: String): LoggedInState = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Logged In State"))
 
-  implicit val format: Format[LoggedInState] = SimpleEnumJsonFormatting.createEnumFormatFor[LoggedInState]("Logged In State", apply)
+  given Format[LoggedInState] = SimpleEnumJsonFormatting.createEnumFormatFor[LoggedInState]("Logged In State", apply)
 }

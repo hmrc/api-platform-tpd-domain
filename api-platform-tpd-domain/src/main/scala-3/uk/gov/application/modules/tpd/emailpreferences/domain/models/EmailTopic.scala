@@ -63,6 +63,6 @@ object EmailTopic {
 
   def unsafeApply(text: String): EmailTopic = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Email Topic"))
 
-  implicit val format: Format[EmailTopic] = SimpleEnumJsonFormatting.createStringFormatFor[EmailTopic]("Email Topic", apply)
+  given Format[EmailTopic] = SimpleEnumJsonFormatting.createStringFormatFor[EmailTopic]("Email Topic", apply)
 
 }

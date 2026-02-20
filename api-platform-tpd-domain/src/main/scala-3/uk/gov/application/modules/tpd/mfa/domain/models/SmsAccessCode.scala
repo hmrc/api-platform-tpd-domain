@@ -25,5 +25,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 case class SmsAccessCode(userId: UserId, mfaId: MfaId, accessCode: String, createdTime: Instant)
 
 object SmsAccessCode {
-  implicit val format: Format[SmsAccessCode] = Json.format[SmsAccessCode]
+  given Format[SmsAccessCode] = Json.format[SmsAccessCode]
 }

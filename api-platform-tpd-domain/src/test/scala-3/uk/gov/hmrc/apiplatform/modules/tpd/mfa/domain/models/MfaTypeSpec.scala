@@ -29,8 +29,8 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
     val values =
       Table(
         ("Source", "json", "displayText"),
-        (MfaType.AUTHENTICATOR_APP, "AUTHENTICATOR_APP", "Authenticator app"),
-        (MfaType.SMS, "SMS", "Text message")
+        (MfaType.AuthenticatorApp, "AUTHENTICATOR_APP", "Authenticator app"),
+        (MfaType.Sms, "SMS", "Text message")
       )
 
     "convert lower case string to case object" in {
@@ -59,13 +59,13 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
 
     "read with text error from Json" in {
       intercept[Exception] {
-        testFromJson[MfaType](s""" "123" """)(MfaType.SMS)
+        testFromJson[MfaType](s""" "123" """)(MfaType.Sms)
       }.getMessage() should include("123 is not a valid Mfa Type")
     }
 
     "read with error from Json" in {
       intercept[Exception] {
-        testFromJson[MfaType](s"""123""")(MfaType.SMS)
+        testFromJson[MfaType](s"""123""")(MfaType.Sms)
       }.getMessage() should include("Cannot parse Mfa Type from '123'")
     }
 

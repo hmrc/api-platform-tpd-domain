@@ -21,5 +21,5 @@ import play.api.libs.json.{Json, OFormat}
 final case class SearchParameters(emailFilter: Option[String], status: Option[String], textFilter: Option[String])
 
 object SearchParameters {
-  implicit val searchParametersFormat: OFormat[SearchParameters] = Json.format[SearchParameters]
+  given OFormat[SearchParameters] = Json.format[SearchParameters]
 }

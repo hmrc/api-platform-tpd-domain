@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 case class RegisterSmsResponse(mfaId: MfaId, mobileNumber: String)
 
 object RegisterSmsResponse {
-  implicit val format: Format[RegisterSmsResponse] = Json.format[RegisterSmsResponse]
+  given Format[RegisterSmsResponse] = Json.format[RegisterSmsResponse]
 }

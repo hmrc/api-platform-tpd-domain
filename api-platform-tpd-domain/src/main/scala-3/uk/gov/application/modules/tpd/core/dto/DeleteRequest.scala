@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 case class DeleteRequest(gatekeeperUserId: Option[String], emailAddress: LaxEmailAddress)
 
 object DeleteRequest {
-  implicit val format: OFormat[DeleteRequest] = Json.format[DeleteRequest]
+  given OFormat[DeleteRequest] = Json.format[DeleteRequest]
 }
 
 trait Deleted

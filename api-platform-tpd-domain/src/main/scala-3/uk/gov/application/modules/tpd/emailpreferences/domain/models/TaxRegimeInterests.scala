@@ -21,5 +21,5 @@ import play.api.libs.json._
 case class TaxRegimeInterests(regime: String, services: Set[String])
 
 object TaxRegimeInterests {
-  implicit val format: OFormat[TaxRegimeInterests] = Json.format[TaxRegimeInterests]
+  given OFormat[TaxRegimeInterests] = Json.format[TaxRegimeInterests]
 }

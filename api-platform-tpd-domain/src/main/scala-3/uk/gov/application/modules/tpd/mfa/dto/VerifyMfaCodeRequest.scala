@@ -21,5 +21,5 @@ import play.api.libs.json._
 case class VerifyMfaCodeRequest(code: String)
 
 object VerifyMfaCodeRequest {
-  implicit val format: OFormat[VerifyMfaCodeRequest] = Json.format[VerifyMfaCodeRequest]
+  given OFormat[VerifyMfaCodeRequest] = Json.format[VerifyMfaCodeRequest]
 }

@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 case class PasswordCheckRequest(email: LaxEmailAddress, password: String)
 
 object PasswordCheckRequest {
-  implicit val format: OFormat[PasswordCheckRequest] = Json.format[PasswordCheckRequest]
+  given OFormat[PasswordCheckRequest] = Json.format[PasswordCheckRequest]
 }

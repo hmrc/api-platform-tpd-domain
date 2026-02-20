@@ -21,7 +21,7 @@ import play.api.libs.json._
 case class EmailPreferences(interests: List[TaxRegimeInterests], topics: Set[EmailTopic])
 
 object EmailPreferences {
-  implicit val format: OFormat[EmailPreferences] = Json.format[EmailPreferences]
+  given OFormat[EmailPreferences] = Json.format[EmailPreferences]
 
   def noPreferences: EmailPreferences = EmailPreferences(List.empty, Set.empty)
 }

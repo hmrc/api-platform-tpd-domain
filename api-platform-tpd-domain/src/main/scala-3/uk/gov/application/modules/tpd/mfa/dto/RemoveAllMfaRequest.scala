@@ -21,5 +21,5 @@ import play.api.libs.json._
 case class RemoveAllMfaRequest(removedBy: String)
 
 object RemoveAllMfaRequest {
-  implicit val RemoveMfaRequestWrites: Format[RemoveAllMfaRequest] = Json.format[RemoveAllMfaRequest]
+  given Format[RemoveAllMfaRequest] = Json.format[RemoveAllMfaRequest]
 }

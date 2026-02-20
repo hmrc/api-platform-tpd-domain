@@ -23,11 +23,11 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, Us
 case class RegisteredOrUnregisteredUser(userId: UserId, email: LaxEmailAddress, isRegistered: Boolean, isVerified: Boolean)
 
 object RegisteredOrUnregisteredUser {
-  implicit val format: OFormat[RegisteredOrUnregisteredUser] = Json.format[RegisteredOrUnregisteredUser]
+  given OFormat[RegisteredOrUnregisteredUser] = Json.format[RegisteredOrUnregisteredUser]
 }
 
 case class GetRegisteredOrUnregisteredUsersResponse(users: List[RegisteredOrUnregisteredUser])
 
 object GetRegisteredOrUnregisteredUsersResponse {
-  implicit val format: OFormat[GetRegisteredOrUnregisteredUsersResponse] = Json.format[GetRegisteredOrUnregisteredUsersResponse]
+  given OFormat[GetRegisteredOrUnregisteredUsersResponse] = Json.format[GetRegisteredOrUnregisteredUsersResponse]
 }

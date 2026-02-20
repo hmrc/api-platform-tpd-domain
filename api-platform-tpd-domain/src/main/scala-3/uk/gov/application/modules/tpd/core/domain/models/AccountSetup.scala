@@ -29,5 +29,5 @@ case class AccountSetup(
   )
 
 object AccountSetup {
-  implicit val format: OFormat[AccountSetup] = Json.format[AccountSetup]
+  given OFormat[AccountSetup] = Json.format[AccountSetup]
 }

@@ -18,28 +18,22 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-sealed trait MfaType {
-
-  lazy val displayText: String = {
+enum MfaType {
+  def displayText: String = {
     this match {
-      case MfaType.AUTHENTICATOR_APP => "Authenticator app"
-      case MfaType.SMS               => "Text message"
+      case AuthenticatorApp => "Authenticator app"
+      case Sms              => "Text message"
     }
   }
+
+  case AuthenticatorApp, Sms
 }
 
 object MfaType {
   import play.api.libs.json.Format
 
-  val values: Set[MfaType] = Set(AUTHENTICATOR_APP, SMS)
-
-  case object AUTHENTICATOR_APP extends MfaType
-  case object SMS               extends MfaType
-
   def apply(text: String): Option[MfaType] = MfaType.values.find(_.toString() == text.toUpperCase)
-
   def unsafeApply(text: String): MfaType = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Mfa Type"))
 
-  implicit val format: Format[MfaType] = SimpleEnumJsonFormatting.createStringFormatFor[MfaType]("Mfa Type", apply)
-
+  given Format[MfaType] = SimpleEnumJsonFormatting.createEnumFormatFor[MfaType]("Mfa Type", apply)
 }

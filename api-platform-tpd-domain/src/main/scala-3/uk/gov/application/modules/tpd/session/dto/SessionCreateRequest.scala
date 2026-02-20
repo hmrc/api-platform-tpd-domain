@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 case class SessionCreateRequest(email: LaxEmailAddress, password: String, mfaMandatedForUser: Option[Boolean])
 
 object SessionCreateRequest {
-  implicit val format: OFormat[SessionCreateRequest] = Json.format[SessionCreateRequest]
+  given OFormat[SessionCreateRequest] = Json.format[SessionCreateRequest]
 }

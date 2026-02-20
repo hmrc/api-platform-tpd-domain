@@ -51,7 +51,7 @@ class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
           ("name"      -> JsString("aName")),
           ("createdOn" -> JsString(nowAsText)),
           ("verified"  -> JsBoolean(true)),
-          ("mfaType"   -> JsString(MfaType.AUTHENTICATOR_APP.toString()))
+          ("mfaType"   -> JsString(MfaType.AuthenticatorApp.toString()))
         )
       }
 
@@ -66,7 +66,7 @@ class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
           ("createdOn"    -> JsString(nowAsText)),
           ("mobileNumber" -> JsString("07999123456")),
           ("verified"     -> JsBoolean(true)),
-          ("mfaType"      -> JsString(MfaType.SMS.toString()))
+          ("mfaType"      -> JsString(MfaType.Sms.toString()))
         )
       }
 

@@ -40,5 +40,5 @@ case object StatusFilter {
 
   import play.api.libs.json.Format
 
-  implicit val format: Format[StatusFilter] = SimpleEnumJsonFormatting.createFormatFor[StatusFilter]("Status Filter", apply(_), t => t.toString.toUpperCase)
+  given Format[StatusFilter] = SimpleEnumJsonFormatting.createFormatFor[StatusFilter]("Status Filter", apply(_), t => t.toString.toUpperCase)
 }

@@ -45,7 +45,7 @@ case class User(
 
 object User extends EnvReads with EnvWrites {
 
-  implicit val dateTimeFormat: Format[Instant] = Format(DefaultInstantReads, DefaultInstantWrites)
+  given Format[Instant] = Format(DefaultInstantReads, DefaultInstantWrites)
 
-  implicit val format: OFormat[User] = Json.using[Json.WithDefaultValues].format[User]
+  given OFormat[User] = Json.using[Json.WithDefaultValues].format[User]
 }

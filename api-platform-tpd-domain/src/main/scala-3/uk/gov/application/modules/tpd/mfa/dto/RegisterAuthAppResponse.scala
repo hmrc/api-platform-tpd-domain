@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 case class RegisterAuthAppResponse(secret: String, mfaId: MfaId)
 
 object RegisterAuthAppResponse {
-  implicit val format: OFormat[RegisterAuthAppResponse] = Json.format[RegisterAuthAppResponse]
+  given OFormat[RegisterAuthAppResponse] = Json.format[RegisterAuthAppResponse]
 }

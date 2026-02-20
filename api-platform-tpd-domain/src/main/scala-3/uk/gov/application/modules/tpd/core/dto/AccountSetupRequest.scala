@@ -45,5 +45,5 @@ case class AccountSetupRequest(
 }
 
 object AccountSetupRequest {
-  implicit val format: OFormat[AccountSetupRequest] = Json.format[AccountSetupRequest]
+  given OFormat[AccountSetupRequest] = Json.format[AccountSetupRequest]
 }

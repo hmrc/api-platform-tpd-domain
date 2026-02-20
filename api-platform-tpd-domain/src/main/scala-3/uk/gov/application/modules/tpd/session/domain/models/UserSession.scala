@@ -31,5 +31,5 @@ case class UserSession(sessionId: UserSessionId, loggedInState: LoggedInState, d
 }
 
 object UserSession {
-  implicit val format: OFormat[UserSession] = Json.format[UserSession]
+  given OFormat[UserSession] = Json.format[UserSession]
 }

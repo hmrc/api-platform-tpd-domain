@@ -30,5 +30,5 @@ object EmailIdentifier {
   def parse(text: String): Option[EmailIdentifier] =
     simplestEmailRegex.findFirstIn(text).map(t => EmailIdentifier(LaxEmailAddress(t)))
 
-  implicit val format: OFormat[EmailIdentifier] = Json.format[EmailIdentifier]
+  given OFormat[EmailIdentifier] = Json.format[EmailIdentifier]
 }

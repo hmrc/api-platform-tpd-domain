@@ -28,5 +28,5 @@ case class UserAuthenticationResponse(
   )
 
 object UserAuthenticationResponse {
-  implicit val format: OFormat[UserAuthenticationResponse] = Json.format[UserAuthenticationResponse]
+  given OFormat[UserAuthenticationResponse] = Json.format[UserAuthenticationResponse]
 }

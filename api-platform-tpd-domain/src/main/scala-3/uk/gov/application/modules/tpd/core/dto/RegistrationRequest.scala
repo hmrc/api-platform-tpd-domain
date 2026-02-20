@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 case class RegistrationRequest(email: LaxEmailAddress, password: String, firstName: String, lastName: String)
 
 object RegistrationRequest {
-  implicit val format: OFormat[RegistrationRequest] = Json.format[RegistrationRequest]
+  given OFormat[RegistrationRequest] = Json.format[RegistrationRequest]
 }

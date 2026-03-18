@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import play.api.libs.json.{Json, OFormat}
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 
-case class GetRegisteredOrUnregisteredUsersRequest(userIds: List[UserId])
+case class GetUsersRequest(userIds: List[UserId])
 
-object GetRegisteredOrUnregisteredUsersRequest {
-  implicit val format: OFormat[GetRegisteredOrUnregisteredUsersRequest] = Json.format[GetRegisteredOrUnregisteredUsersRequest]
+object GetUsersRequest {
+  implicit val format: OFormat[GetUsersRequest] = Json.format[GetUsersRequest]
 }

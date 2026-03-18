@@ -21,21 +21,21 @@ import play.api.libs.json.Json
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 
-class GetRegisteredOrUnregisteredUsersRequestSpec extends BaseJsonFormattersSpec {
+class GetUsersRequestSpec extends BaseJsonFormattersSpec {
 
-  "GetRegisteredOrUnregisteredUserRequest JsonFormatters" when {
+  "GetUserRequest JsonFormatters" when {
     val userId1        = UserId.random
     val userId2        = UserId.random
-    val exampleRequest = GetRegisteredOrUnregisteredUsersRequest(List(userId1, userId2))
+    val exampleRequest = GetUsersRequest(List(userId1, userId2))
     val jsonText       = s"""{"userIds":["$userId1","$userId2"]}"""
 
-    "given an GetRegisteredOrUnregisteredUserRequest" should {
+    "given an GetUserRequest" should {
       "produce Json" in {
         Json.toJson(exampleRequest) shouldBe Json.parse(jsonText)
       }
 
       "read json" in {
-        testFromJson[GetRegisteredOrUnregisteredUsersRequest](jsonText)(exampleRequest)
+        testFromJson[GetUsersRequest](jsonText)(exampleRequest)
       }
     }
   }

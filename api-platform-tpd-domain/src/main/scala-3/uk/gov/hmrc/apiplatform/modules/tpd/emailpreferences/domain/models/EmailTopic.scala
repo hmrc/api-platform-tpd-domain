@@ -16,53 +16,42 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
 
-sealed trait EmailTopic {
-  lazy val displayOrder = EmailTopic.displayOrder(this)
-  lazy val displayName  = EmailTopic.displayName(this)
-  lazy val description  = EmailTopic.description(this)
-}
+enum EmailTopic(val displayOrder: Int, val displayName: String, val description: String):
+
+  case BusinessAndPolicy extends EmailTopic(
+    displayOrder = 1,
+    displayName = "Business and policy",
+    description = "Policy compliance, legislative changes and business guidance support"
+  )
+
+  case Technical extends EmailTopic(
+    displayOrder = 2,
+    displayName = "Technical",
+    description = "Specifications, service guides, bug fixes and known errors"
+  )
+
+  case ReleaseSchedules extends EmailTopic(
+    displayOrder = 3,
+    displayName = "Release schedules",
+    description = "Notifications about planned releases and outages"
+  )
+
+  case EventInvites extends EmailTopic(
+    displayOrder = Int.MaxValue,
+    displayName = "Event invites",
+    description = "Get invites to knowledge share events and user research opportunities"
+  )
 
 object EmailTopic {
-
-  val values = Set(BUSINESS_AND_POLICY, TECHNICAL, RELEASE_SCHEDULES, EVENT_INVITES)
-
-  case object BUSINESS_AND_POLICY extends EmailTopic
-
-  case object TECHNICAL extends EmailTopic
-
-  case object RELEASE_SCHEDULES extends EmailTopic
-
-  case object EVENT_INVITES extends EmailTopic
-
-  def displayOrder(et: EmailTopic): Int = et match {
-    case BUSINESS_AND_POLICY => 1
-    case TECHNICAL           => 2
-    case RELEASE_SCHEDULES   => 3
-    case EVENT_INVITES       => Int.MaxValue
-  }
-
-  def displayName(et: EmailTopic): String = et match {
-    case BUSINESS_AND_POLICY => "Business and policy"
-    case TECHNICAL           => "Technical"
-    case RELEASE_SCHEDULES   => "Release schedules"
-    case EVENT_INVITES       => "Event invites"
-  }
-
-  def description(et: EmailTopic): String = et match {
-    case BUSINESS_AND_POLICY => "Policy compliance, legislative changes and business guidance support"
-    case TECHNICAL           => "Specifications, service guides, bug fixes and known errors"
-    case RELEASE_SCHEDULES   => "Notifications about planned releases and outages"
-    case EVENT_INVITES       => "Get invites to knowledge share events and user research opportunities"
-  }
-
-  def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString() == text.toUpperCase)
+  
+  def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString.toUpperCase == text.toUpperCase)
 
   def unsafeApply(text: String): EmailTopic = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Email Topic"))
 
-  implicit val format: Format[EmailTopic] = SealedTraitJsonFormatting.createFormatFor[EmailTopic]("Email Topic", apply)
+  given Format[EmailTopic] = SimpleEnumJsonFormatting.createEnumFormatFor[EmailTopic]("Email Topic", apply)
 
 }

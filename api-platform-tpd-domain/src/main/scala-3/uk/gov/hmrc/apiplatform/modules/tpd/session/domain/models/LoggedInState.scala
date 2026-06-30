@@ -16,24 +16,21 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
-import play.api.libs.json.Format
+enum LoggedInState:
+  case LoggedIn
+  case PartLoggedInEnablingMFA
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
-
-sealed trait LoggedInState {
-  lazy val isLoggedIn: Boolean                = this == LoggedInState.LOGGED_IN
-  lazy val isPartLoggedInEnablingMFA: Boolean = this == LoggedInState.PART_LOGGED_IN_ENABLING_MFA
-}
+  val isLoggedIn: Boolean = this == LoggedIn
+  val isPartLoggedInEnablingMFA: Boolean = this == PartLoggedInEnablingMFA
 
 object LoggedInState {
-  case object LOGGED_IN                   extends LoggedInState
-  case object PART_LOGGED_IN_ENABLING_MFA extends LoggedInState
 
-  val values: Set[LoggedInState] = Set(LOGGED_IN, PART_LOGGED_IN_ENABLING_MFA)
-
-  def apply(text: String): Option[LoggedInState] = LoggedInState.values.find(_.toString() == text.toUpperCase)
+  def apply(text: String): Option[LoggedInState] = LoggedInState.values.find(_.toString.toUpperCase == text.toUpperCase)
 
   def unsafeApply(text: String): LoggedInState = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Logged In State"))
 
-  implicit val format: Format[LoggedInState] = SealedTraitJsonFormatting.createFormatFor[LoggedInState]("Logged In State", apply)
+  import play.api.libs.json.Format
+  import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
+  
+  implicit val format: Format[LoggedInState] = SimpleEnumJsonFormatting.createEnumFormatFor[LoggedInState]("Logged In State", apply)
 }

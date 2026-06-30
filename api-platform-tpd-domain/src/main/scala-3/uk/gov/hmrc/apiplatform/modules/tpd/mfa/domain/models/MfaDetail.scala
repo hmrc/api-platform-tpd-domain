@@ -34,8 +34,8 @@ object MfaDetail {
   implicit val smsMfaDetailFormat: OFormat[SmsMfaDetail]                           = Json.format[SmsMfaDetail]
 
   implicit val mfaDetailFormat: Format[MfaDetail] = Union.from[MfaDetail]("mfaType")
-    .and[AuthenticatorAppMfaDetail](MfaType.AUTHENTICATOR_APP.toString)
-    .and[SmsMfaDetail](MfaType.SMS.toString)
+    .and[AuthenticatorAppMfaDetail](MfaType.AuthenticatorApp.toString)
+    .and[SmsMfaDetail](MfaType.Sms.toString)
     .format
 }
 
@@ -45,7 +45,7 @@ case class AuthenticatorAppMfaDetail(
     createdOn: Instant,
     verified: Boolean = false
   ) extends MfaDetail {
-  override val mfaType: MfaType = MfaType.AUTHENTICATOR_APP
+  override val mfaType: MfaType = MfaType.AuthenticatorApp
 }
 
 case class SmsMfaDetail(
@@ -55,5 +55,5 @@ case class SmsMfaDetail(
     mobileNumber: String,
     verified: Boolean = false
   ) extends MfaDetail {
-  override val mfaType: MfaType = MfaType.SMS
+  override val mfaType: MfaType = MfaType.Sms
 }

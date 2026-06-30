@@ -21,7 +21,7 @@ import scala.util.control.Exception._
 
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.SessionId
 
-case class UserSessionId(value: ju.UUID) extends SessionId {
+case class UserSessionId(val value: ju.UUID) extends AnyVal with SessionId {
   override def toString(): String = value.toString
 }
 

@@ -16,29 +16,29 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.services.SealedTraitJsonFormatting
-
-sealed trait StatusFilter
-
-case object StatusFilter {
-  case object Unverified extends StatusFilter
-  case object Verified   extends StatusFilter
-  case object All        extends StatusFilter
-
-  val values = Set[StatusFilter](Unverified, Verified, All)
-
+enum StatusFilter:
+    case Unverified
+    case Verified  
+    case All       
+  
+object StatusFilter {
+  
   def apply(value: String): Option[StatusFilter] =
     value.toUpperCase match {
       case "UNVERIFIED" => Some(StatusFilter.Unverified)
-      case "VERIFIED"   => Some(StatusFilter.Verified)
-      case "ALL"        => Some(StatusFilter.All)
-      case _            => None
+      case "VERIFIED" => Some(StatusFilter.Verified)
+      case "ALL" => Some(StatusFilter.All)
+      case _ => None
     }
 
   def unsafeApply(value: String): StatusFilter =
     apply(value).getOrElse(throw new RuntimeException("Invalid Status Filter: " + value))
 
   import play.api.libs.json.Format
+  import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-  implicit val format: Format[StatusFilter] = SealedTraitJsonFormatting.createFormatFor[StatusFilter]("Status Filter", apply(_), t => t.toString.toUpperCase)
+  given Format[StatusFilter] = SimpleEnumJsonFormatting.createEnumFormatFor[StatusFilter]("Status Filter", apply)
 }
+
+  
+

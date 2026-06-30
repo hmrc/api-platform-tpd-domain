@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserSpec
 
 class UserSessionSpec extends BaseJsonFormattersSpec with FixedClock {
@@ -44,7 +44,7 @@ object UserSessionSpec extends FixedClock {
 
   val example = UserSession(
     sessionId = UserSessionId.random,
-    loggedInState = LoggedInState.LOGGED_IN,
+    loggedInState = LoggedInState.LoggedIn,
     developer = UserSpec.example
   )
 

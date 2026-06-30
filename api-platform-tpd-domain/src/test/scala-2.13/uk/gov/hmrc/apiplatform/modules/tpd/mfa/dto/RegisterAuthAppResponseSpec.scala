@@ -17,6 +17,7 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 
 class RegisterAuthAppResponseSpec extends BaseJsonFormattersSpec {

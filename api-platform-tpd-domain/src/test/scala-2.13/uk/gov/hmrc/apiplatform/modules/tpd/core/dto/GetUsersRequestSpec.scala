@@ -17,7 +17,6 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json.Json
-
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 import uk.gov.hmrc.apiplatform.modules.common.utils._
 

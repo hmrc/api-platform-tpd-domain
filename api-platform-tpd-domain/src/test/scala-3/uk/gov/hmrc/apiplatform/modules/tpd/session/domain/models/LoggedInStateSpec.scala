@@ -18,9 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models.LoggedInState
 
 class LoggedInStateSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
@@ -29,8 +29,15 @@ class LoggedInStateSpec extends BaseJsonFormattersSpec with TableDrivenPropertyC
     val values =
       Table(
         ("Source", "json", "string"),
-        (LoggedInState.LOGGED_IN, "LOGGED_IN", "Unverified"),
-        (LoggedInState.PART_LOGGED_IN_ENABLING_MFA, "PART_LOGGED_IN_ENABLING_MFA", "Verified")
+        (LoggedInState.LoggedIn, "LoggedIn", "Unverified"),
+        (LoggedInState.PartLoggedInEnablingMFA, "PartLoggedInEnablingMfa", "Verified")
+      )
+
+    val jsonValues =
+      Table(
+        ("Source", "json"),
+        (LoggedInState.LoggedIn, "LOGGED_IN"),
+        (LoggedInState.PartLoggedInEnablingMFA, "PART_LOGGED_IN_ENABLING_MFA")
       )
 
     "convert lower case string to case object" in {
@@ -52,25 +59,25 @@ class LoggedInStateSpec extends BaseJsonFormattersSpec with TableDrivenPropertyC
     }
 
     "read from Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         testFromJson[LoggedInState](s""""$j"""")(s)
       }
     }
 
     "read with text error from Json" in {
       intercept[Exception] {
-        testFromJson[LoggedInState](s""" "123" """)(LoggedInState.LOGGED_IN)
+        testFromJson[LoggedInState](s""" "123" """)(LoggedInState.LoggedIn)
       }.getMessage() should include("123 is not a valid Logged In State")
     }
 
     "read with error from Json" in {
       intercept[Exception] {
-        testFromJson[LoggedInState](s"""123""")(LoggedInState.LOGGED_IN)
+        testFromJson[LoggedInState](s"""123""")(LoggedInState.LoggedIn)
       }.getMessage() should include("Cannot parse Logged In State from '123'")
     }
 
     "write to Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         Json.toJson[LoggedInState](s) shouldBe JsString(j)
       }
     }

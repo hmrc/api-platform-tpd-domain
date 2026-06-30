@@ -17,9 +17,9 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressFixtures, UserId}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailPreferencesSpec}
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetail}
 

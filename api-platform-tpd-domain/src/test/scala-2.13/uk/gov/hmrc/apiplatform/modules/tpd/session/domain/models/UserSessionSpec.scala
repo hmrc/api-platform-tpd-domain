@@ -17,8 +17,8 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
 import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.UserSpec
 
 class UserSessionSpec extends BaseJsonFormattersSpec with FixedClock {

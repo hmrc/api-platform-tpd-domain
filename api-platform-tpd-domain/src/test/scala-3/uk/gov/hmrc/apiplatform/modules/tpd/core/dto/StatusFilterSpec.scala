@@ -18,9 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.StatusFilter
 
 class StatusFilterSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {

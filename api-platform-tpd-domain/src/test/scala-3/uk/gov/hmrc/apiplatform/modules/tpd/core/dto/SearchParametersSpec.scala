@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
 class SearchParametersSpec extends BaseJsonFormattersSpec {
 

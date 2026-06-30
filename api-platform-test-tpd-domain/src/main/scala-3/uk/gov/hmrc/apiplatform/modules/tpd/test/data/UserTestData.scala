@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.test.data
 
-import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress.StringSyntax
+import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress.StringSyntax.toLaxEmail
+
 import uk.gov.hmrc.apiplatform.modules.tpd.test.builders.UserBuilder
 import uk.gov.hmrc.apiplatform.modules.tpd.test.utils.UserIdTracker
 

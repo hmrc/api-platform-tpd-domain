@@ -18,15 +18,15 @@ package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailTopic}
 
 class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
   import EmailPreferencesSpec._
 
-  private val fullExample: EmailPreferences = EmailPreferences(interests = List(TaxRegimeInterestsSpec.example), topics = Set(EmailTopic.BUSINESS_AND_POLICY))
+  private val fullExample: EmailPreferences = EmailPreferences(interests = List(TaxRegimeInterestsSpec.example), topics = Set(EmailTopic.BusinessAndPolicy))
 
   private val fullJsonText = s"""{"interests":[${TaxRegimeInterestsSpec.jsonText}],"topics":["BUSINESS_AND_POLICY"]}"""
 

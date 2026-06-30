@@ -16,9 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models
 
-import play.api.libs.json._
-
-import uk.gov.hmrc.apiplatform.modules.common.utils._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
 class UserSessionIdSpec extends BaseJsonFormattersSpec {
 

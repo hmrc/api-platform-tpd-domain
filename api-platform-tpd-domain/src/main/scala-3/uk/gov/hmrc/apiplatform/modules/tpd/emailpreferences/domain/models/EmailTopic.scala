@@ -19,35 +19,34 @@ package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 import play.api.libs.json.*
 import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-
 enum EmailTopic(val displayOrder: Int, val displayName: String, val description: String):
 
   case BusinessAndPolicy extends EmailTopic(
-    displayOrder = 1,
-    displayName = "Business and policy",
-    description = "Policy compliance, legislative changes and business guidance support"
-  )
+        displayOrder = 1,
+        displayName = "Business and policy",
+        description = "Policy compliance, legislative changes and business guidance support"
+      )
 
   case Technical extends EmailTopic(
-    displayOrder = 2,
-    displayName = "Technical",
-    description = "Specifications, service guides, bug fixes and known errors"
-  )
+        displayOrder = 2,
+        displayName = "Technical",
+        description = "Specifications, service guides, bug fixes and known errors"
+      )
 
   case ReleaseSchedules extends EmailTopic(
-    displayOrder = 3,
-    displayName = "Release schedules",
-    description = "Notifications about planned releases and outages"
-  )
+        displayOrder = 3,
+        displayName = "Release schedules",
+        description = "Notifications about planned releases and outages"
+      )
 
   case EventInvites extends EmailTopic(
-    displayOrder = Int.MaxValue,
-    displayName = "Event invites",
-    description = "Get invites to knowledge share events and user research opportunities"
-  )
+        displayOrder = Int.MaxValue,
+        displayName = "Event invites",
+        description = "Get invites to knowledge share events and user research opportunities"
+      )
 
 object EmailTopic {
-  
+
   def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString.toUpperCase == text.toUpperCase)
 
   def unsafeApply(text: String): EmailTopic = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Email Topic"))

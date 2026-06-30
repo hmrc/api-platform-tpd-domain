@@ -16,10 +16,10 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.*
 
 class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
 
@@ -51,7 +51,7 @@ class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
           ("name"      -> JsString("aName")),
           ("createdOn" -> JsString(nowAsText)),
           ("verified"  -> JsBoolean(true)),
-          ("mfaType"   -> JsString(MfaType.AUTHENTICATOR_APP.toString()))
+          ("mfaType"   -> JsString("AUTHENTICATOR_APP"))
         )
       }
 
@@ -66,7 +66,7 @@ class MfaDetailSpec extends BaseJsonFormattersSpec with FixedClock {
           ("createdOn"    -> JsString(nowAsText)),
           ("mobileNumber" -> JsString("07999123456")),
           ("verified"     -> JsBoolean(true)),
-          ("mfaType"      -> JsString(MfaType.SMS.toString()))
+          ("mfaType"      -> JsString("SMS"))
         )
       }
 

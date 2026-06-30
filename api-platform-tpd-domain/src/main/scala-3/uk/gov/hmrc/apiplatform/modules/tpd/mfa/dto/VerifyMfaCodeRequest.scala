@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.dto
 
-import play.api.libs.json._
+import play.api.libs.json.*
 
 case class VerifyMfaCodeRequest(code: String)
 

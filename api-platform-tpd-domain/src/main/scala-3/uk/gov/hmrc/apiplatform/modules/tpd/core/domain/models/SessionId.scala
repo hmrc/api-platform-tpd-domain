@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
-import java.{util => ju}
+import java.util as ju
 
 trait SessionId extends Any {
   def value: ju.UUID

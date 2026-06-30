@@ -18,6 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, LaxEmailAddressFixtures}
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.EmailIdentifier
 
 class EmailIdentifierSpec extends BaseJsonFormattersSpec with LaxEmailAddressFixtures {

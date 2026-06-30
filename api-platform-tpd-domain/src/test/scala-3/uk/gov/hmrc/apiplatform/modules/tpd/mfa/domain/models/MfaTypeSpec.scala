@@ -18,9 +18,9 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaType
 
 class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
@@ -29,8 +29,15 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
     val values =
       Table(
         ("Source", "json", "displayText"),
-        (MfaType.AUTHENTICATOR_APP, "AUTHENTICATOR_APP", "Authenticator app"),
-        (MfaType.SMS, "SMS", "Text message")
+        (MfaType.AuthenticatorApp, "AuthenticatorApp", "Authenticator app"),
+        (MfaType.Sms, "Sms", "Text message")
+      )
+
+    val jsonValues =
+      Table(
+        ("Source", "json"),
+        (MfaType.AuthenticatorApp, "AUTHENTICATOR_APP"),
+        (MfaType.Sms, "SMS")
       )
 
     "convert lower case string to case object" in {
@@ -52,25 +59,25 @@ class MfaTypeSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks 
     }
 
     "read from Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         testFromJson[MfaType](s""""$j"""")(s)
       }
     }
 
     "read with text error from Json" in {
       intercept[Exception] {
-        testFromJson[MfaType](s""" "123" """)(MfaType.SMS)
+        testFromJson[MfaType](s""" "123" """)(MfaType.Sms)
       }.getMessage() should include("123 is not a valid Mfa Type")
     }
 
     "read with error from Json" in {
       intercept[Exception] {
-        testFromJson[MfaType](s"""123""")(MfaType.SMS)
+        testFromJson[MfaType](s"""123""")(MfaType.Sms)
       }.getMessage() should include("Cannot parse Mfa Type from '123'")
     }
 
     "write to Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         Json.toJson[MfaType](s) shouldBe JsString(j)
       }
     }

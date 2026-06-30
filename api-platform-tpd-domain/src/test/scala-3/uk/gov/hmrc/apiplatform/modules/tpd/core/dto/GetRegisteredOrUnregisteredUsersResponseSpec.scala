@@ -17,9 +17,8 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 import play.api.libs.json.Json
-
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
-import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
 class GetRegisteredOrUnregisteredUsersResponseSpec extends BaseJsonFormattersSpec {
 

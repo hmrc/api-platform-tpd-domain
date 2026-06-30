@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 
-import play.api.libs.json._
+import play.api.libs.json.*
 
 case class EmailPreferences(interests: List[TaxRegimeInterests], topics: Set[EmailTopic])
 

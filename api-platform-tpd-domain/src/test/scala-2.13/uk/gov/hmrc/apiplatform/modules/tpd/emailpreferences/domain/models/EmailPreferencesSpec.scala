@@ -19,8 +19,8 @@ package uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailTopic}
 
 class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {

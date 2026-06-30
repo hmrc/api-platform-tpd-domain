@@ -18,11 +18,11 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import java.time.Instant
 
-import play.api.libs.json._
-
+import play.api.libs.json.*
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
-import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models._
-import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models._
+
+import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.*
+import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.*
 
 case class User(
     email: LaxEmailAddress,

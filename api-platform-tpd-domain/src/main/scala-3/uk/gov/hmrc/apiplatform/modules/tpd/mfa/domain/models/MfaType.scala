@@ -18,12 +18,12 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 enum MfaType(val displayText: String):
   case AuthenticatorApp extends MfaType("Authenticator app")
-  case Sms               extends MfaType("Text message")
+  case Sms              extends MfaType("Text message")
 
 object MfaType {
   import play.api.libs.json.Format
   import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
-  
+
   def apply(text: String): Option[MfaType] = MfaType.values.find(_.toString.toUpperCase == text.toUpperCase)
 
   def unsafeApply(text: String): MfaType = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Mfa Type"))

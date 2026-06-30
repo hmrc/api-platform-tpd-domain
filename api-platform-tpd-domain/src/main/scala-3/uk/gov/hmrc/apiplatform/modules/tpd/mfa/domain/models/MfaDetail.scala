@@ -18,6 +18,8 @@ package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
 import java.time.Instant
 
+import uk.gov.hmrc.apiplatform.modules.common.domain.services.EnumJsonHelper.toScreamingSnakeCase
+
 sealed trait MfaDetail {
   def id: MfaId
   def name: String
@@ -34,8 +36,8 @@ object MfaDetail {
   implicit val smsMfaDetailFormat: OFormat[SmsMfaDetail]                           = Json.format[SmsMfaDetail]
 
   implicit val mfaDetailFormat: Format[MfaDetail] = Union.from[MfaDetail]("mfaType")
-    .and[AuthenticatorAppMfaDetail](MfaType.AuthenticatorApp.toString)
-    .and[SmsMfaDetail](MfaType.Sms.toString)
+    .and[AuthenticatorAppMfaDetail](toScreamingSnakeCase(MfaType.AuthenticatorApp.toString))
+    .and[SmsMfaDetail](toScreamingSnakeCase(MfaType.Sms.toString))
     .format
 }
 

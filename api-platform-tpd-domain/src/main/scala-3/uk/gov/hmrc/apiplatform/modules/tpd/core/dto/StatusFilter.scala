@@ -17,18 +17,18 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.dto
 
 enum StatusFilter:
-    case Unverified
-    case Verified  
-    case All       
-  
+  case Unverified
+  case Verified
+  case All
+
 object StatusFilter {
-  
+
   def apply(value: String): Option[StatusFilter] =
     value.toUpperCase match {
       case "UNVERIFIED" => Some(StatusFilter.Unverified)
-      case "VERIFIED" => Some(StatusFilter.Verified)
-      case "ALL" => Some(StatusFilter.All)
-      case _ => None
+      case "VERIFIED"   => Some(StatusFilter.Verified)
+      case "ALL"        => Some(StatusFilter.All)
+      case _            => None
     }
 
   def unsafeApply(value: String): StatusFilter =
@@ -39,6 +39,3 @@ object StatusFilter {
 
   given Format[StatusFilter] = SimpleEnumJsonFormatting.createEnumFormatFor[StatusFilter]("Status Filter", apply)
 }
-
-  
-

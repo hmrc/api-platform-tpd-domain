@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
-import java.{util => ju}
-import scala.util.control.Exception._
+import java.util as ju
+import scala.util.control.Exception.*
 
 case class MfaId(value: ju.UUID) extends AnyVal {
   override def toString(): String = value.toString()

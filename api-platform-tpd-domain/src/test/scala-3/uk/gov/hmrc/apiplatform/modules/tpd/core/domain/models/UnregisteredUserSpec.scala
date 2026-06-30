@@ -17,7 +17,7 @@
 package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddressFixtures, UserId}
-import uk.gov.hmrc.apiplatform.modules.common.utils._
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
 class UnregisteredUserSpec extends BaseJsonFormattersSpec with FixedClock with LaxEmailAddressFixtures {
   private val userId  = UserId.random

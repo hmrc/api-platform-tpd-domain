@@ -20,9 +20,9 @@ import scala.util.Random
 
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-import play.api.libs.json._
+import play.api.libs.json.*
+import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
-import uk.gov.hmrc.apiplatform.modules.common.utils._
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailTopic
 
 class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
@@ -31,10 +31,19 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
     val values =
       Table(
         ("Source", "json", "display name"),
-        (EmailTopic.BUSINESS_AND_POLICY, "BUSINESS_AND_POLICY", "Business and policy"),
-        (EmailTopic.EVENT_INVITES, "EVENT_INVITES", "Event invites"),
-        (EmailTopic.RELEASE_SCHEDULES, "RELEASE_SCHEDULES", "Release schedules"),
-        (EmailTopic.TECHNICAL, "TECHNICAL", "Technical")
+        (EmailTopic.BusinessAndPolicy, "BusinessAndPolicy", "Business and policy"),
+        (EmailTopic.EventInvites, "EventInvites", "Event invites"),
+        (EmailTopic.ReleaseSchedules, "ReleaseSchedules", "Release schedules"),
+        (EmailTopic.Technical, "Technical", "Technical")
+      )
+
+    val jsonValues =
+      Table(
+        ("Source", "json"),
+        (EmailTopic.BusinessAndPolicy, "BUSINESS_AND_POLICY"),
+        (EmailTopic.EventInvites, "EVENT_INVITES"),
+        (EmailTopic.ReleaseSchedules, "RELEASE_SCHEDULES"),
+        (EmailTopic.Technical, "TECHNICAL")
       )
 
     "convert lower case string to case object" in {
@@ -56,25 +65,25 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
     }
 
     "read from Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         testFromJson[EmailTopic](s""""$j"""")(s)
       }
     }
 
     "read with text error from Json" in {
       intercept[Exception] {
-        testFromJson[EmailTopic](s""" "123" """)(EmailTopic.TECHNICAL)
+        testFromJson[EmailTopic](s""" "123" """)(EmailTopic.Technical)
       }.getMessage() should include("123 is not a valid Email Topic")
     }
 
     "read with error from Json" in {
       intercept[Exception] {
-        testFromJson[EmailTopic](s"""123""")(EmailTopic.TECHNICAL)
+        testFromJson[EmailTopic](s"""123""")(EmailTopic.Technical)
       }.getMessage() should include("Cannot parse Email Topic from '123'")
     }
 
     "write to Json" in {
-      forAll(values) { (s, j, _) =>
+      forAll(jsonValues) { (s, j) =>
         Json.toJson[EmailTopic](s) shouldBe JsString(j)
       }
     }
@@ -93,7 +102,7 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
 
     "displayOrder orders correctly" in {
       import EmailTopic._
-      Random.shuffle(EmailTopic.values.toList).sortBy(_.displayOrder) shouldBe List(BUSINESS_AND_POLICY, TECHNICAL, RELEASE_SCHEDULES, EVENT_INVITES)
+      Random.shuffle(EmailTopic.values.toList).sortBy(_.displayOrder) shouldBe List(BusinessAndPolicy, Technical, ReleaseSchedules, EventInvites)
     }
   }
 }

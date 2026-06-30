@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models
 
-import java.{util => ju}
-import scala.util.control.Exception._
+import java.util as ju
+import scala.util.control.Exception.*
 
 import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.SessionId
 

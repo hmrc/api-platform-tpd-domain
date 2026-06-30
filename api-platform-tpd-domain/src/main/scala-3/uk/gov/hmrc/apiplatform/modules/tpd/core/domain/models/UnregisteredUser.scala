@@ -18,8 +18,7 @@ package uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models
 
 import java.time.Instant
 
-import play.api.libs.json._
-
+import play.api.libs.json.*
 import uk.gov.hmrc.apiplatform.modules.common.domain.models.{LaxEmailAddress, UserId}
 
 case class UnregisteredUser(email: LaxEmailAddress, creationTime: Instant, userId: UserId)

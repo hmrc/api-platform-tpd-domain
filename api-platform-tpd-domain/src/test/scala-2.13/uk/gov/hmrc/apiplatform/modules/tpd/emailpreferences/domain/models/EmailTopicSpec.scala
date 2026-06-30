@@ -21,8 +21,8 @@ import scala.util.Random
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 import play.api.libs.json._
-
 import uk.gov.hmrc.apiplatform.modules.common.utils._
+
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.EmailTopic
 
 class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {

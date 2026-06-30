@@ -24,5 +24,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 case class SessionCreateWithDeviceRequest(email: LaxEmailAddress, password: String, mfaMandatedForUser: Option[Boolean], deviceSessionId: Option[DeviceSessionId])
 
 object SessionCreateWithDeviceRequest {
-  implicit val format: OFormat[SessionCreateWithDeviceRequest] = Json.format[SessionCreateWithDeviceRequest]
+  given OFormat[SessionCreateWithDeviceRequest] = Json.format[SessionCreateWithDeviceRequest]
 }

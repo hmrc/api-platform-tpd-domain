@@ -22,5 +22,5 @@ case class DeviceSession(deviceSessionId: DeviceSessionId, userId: UserId)
 
 object DeviceSession {
   import play.api.libs.json._
-  implicit val format: OFormat[DeviceSession] = Json.format[DeviceSession]
+  given OFormat[DeviceSession] = Json.format[DeviceSession]
 }

@@ -24,5 +24,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.MfaId
 case class AccessCodeAuthenticationRequest(email: LaxEmailAddress, accessCode: String, nonce: String, mfaId: MfaId)
 
 object AccessCodeAuthenticationRequest {
-  implicit val format: OFormat[AccessCodeAuthenticationRequest] = Json.format[AccessCodeAuthenticationRequest]
+  given OFormat[AccessCodeAuthenticationRequest] = Json.format[AccessCodeAuthenticationRequest]
 }

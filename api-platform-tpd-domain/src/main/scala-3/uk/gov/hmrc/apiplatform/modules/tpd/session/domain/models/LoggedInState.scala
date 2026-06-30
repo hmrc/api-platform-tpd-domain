@@ -32,5 +32,5 @@ object LoggedInState {
   import play.api.libs.json.Format
   import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-  implicit val format: Format[LoggedInState] = SimpleEnumJsonFormatting.createEnumFormatFor[LoggedInState]("Logged In State", apply)
+  given Format[LoggedInState] = SimpleEnumJsonFormatting.createEnumFormatFor[LoggedInState]("Logged In State", apply)
 }

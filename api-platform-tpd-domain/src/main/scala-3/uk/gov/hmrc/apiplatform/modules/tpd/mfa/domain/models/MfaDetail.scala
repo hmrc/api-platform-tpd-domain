@@ -32,10 +32,10 @@ object MfaDetail {
   import play.api.libs.json._
   import uk.gov.hmrc.play.json.Union
 
-  implicit val authenticatorAppMfaDetailFormat: OFormat[AuthenticatorAppMfaDetail] = Json.format[AuthenticatorAppMfaDetail]
-  implicit val smsMfaDetailFormat: OFormat[SmsMfaDetail]                           = Json.format[SmsMfaDetail]
+  given OFormat[AuthenticatorAppMfaDetail] = Json.format[AuthenticatorAppMfaDetail]
+  given OFormat[SmsMfaDetail]              = Json.format[SmsMfaDetail]
 
-  implicit val mfaDetailFormat: Format[MfaDetail] = Union.from[MfaDetail]("mfaType")
+  given Format[MfaDetail] = Union.from[MfaDetail]("mfaType")
     .and[AuthenticatorAppMfaDetail](toScreamingSnakeCase(MfaType.AuthenticatorApp.toString))
     .and[SmsMfaDetail](toScreamingSnakeCase(MfaType.Sms.toString))
     .format

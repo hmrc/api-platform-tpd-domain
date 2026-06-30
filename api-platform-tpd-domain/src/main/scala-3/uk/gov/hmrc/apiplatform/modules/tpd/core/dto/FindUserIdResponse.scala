@@ -22,5 +22,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 case class FindUserIdResponse(userId: UserId)
 
 object FindUserIdResponse {
-  implicit val format: OFormat[FindUserIdResponse] = Json.format[FindUserIdResponse]
+  given OFormat[FindUserIdResponse] = Json.format[FindUserIdResponse]
 }

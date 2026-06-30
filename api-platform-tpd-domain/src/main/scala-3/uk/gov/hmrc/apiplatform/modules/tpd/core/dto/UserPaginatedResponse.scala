@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.domain.models.User
 case class UserPaginatedResponse(totalCount: Int, users: Seq[User])
 
 object UserPaginatedResponse {
-  implicit val format: Format[UserPaginatedResponse] = Json.format
+  given Format[UserPaginatedResponse] = Json.format
 }

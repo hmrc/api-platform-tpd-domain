@@ -28,7 +28,7 @@ case class DeviceSessionId(val value: ju.UUID) extends AnyVal with SessionId {
 object DeviceSessionId {
   import play.api.libs.json.{Format, Json}
 
-  implicit val format: Format[DeviceSessionId] = Json.valueFormat[DeviceSessionId]
+  given Format[DeviceSessionId] = Json.valueFormat[DeviceSessionId]
 
   def apply(raw: String): Option[DeviceSessionId] = allCatch.opt(DeviceSessionId(ju.UUID.fromString(raw)))
 

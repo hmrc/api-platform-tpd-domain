@@ -22,5 +22,5 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddress
 case class PasswordChangeRequest(email: LaxEmailAddress, oldPassword: String, newPassword: String)
 
 object PasswordChangeRequest {
-  implicit val format: OFormat[PasswordChangeRequest] = Json.format[PasswordChangeRequest]
+  given OFormat[PasswordChangeRequest] = Json.format[PasswordChangeRequest]
 }

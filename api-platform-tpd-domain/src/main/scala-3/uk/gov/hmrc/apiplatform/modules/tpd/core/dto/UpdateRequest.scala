@@ -23,5 +23,5 @@ import uk.gov.hmrc.apiplatform.modules.tpd.core.dto.AccountSetupRequest
 case class UpdateRequest(firstName: String, lastName: String, accountSetup: Option[AccountSetupRequest] = None)
 
 object UpdateRequest {
-  implicit val format: OFormat[UpdateRequest] = Json.format[UpdateRequest]
+  given OFormat[UpdateRequest] = Json.format[UpdateRequest]
 }

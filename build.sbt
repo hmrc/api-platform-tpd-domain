@@ -8,26 +8,74 @@ import bloop.integrations.sbt.BloopDefaults
 
 val appName = "api-platform-tpd-domain"
 
-val scala2_13 = "2.13.16"
+val scala2_13 = "2.13.18"
+val scala3 = "3.3.7"
 
-ThisBuild / majorVersion     := 0
-ThisBuild / isPublicArtefact := true
-ThisBuild / scalaVersion     := scala2_13
+inThisBuild(
+  List(
+    majorVersion := 1,
+    scalaVersion := scala3,
+    isPublicArtefact := true,
+    semanticdbEnabled := true,
+    semanticdbVersion := scalafixSemanticdb.revision,
+    libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+  )
+)
 
-ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+lazy val sharedScalacOptions =
+  Seq("-encoding", "UTF-8", "-Wunused:imports,privates,locals")
 
-ThisBuild / semanticdbEnabled := true
-ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
+lazy val scala2Options = sharedScalacOptions ++
+  Seq("-explaintypes")
+
+lazy val scala3Options = sharedScalacOptions ++
+  Seq("-explain")
+
+lazy val commonSettings = Seq(
+
+  scalafixConfig := {
+    val base = (ThisBuild / baseDirectory).value
+    val file =
+      CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((3, _)) => base / ".scalafix-scala3.conf"
+        case _            => base / ".scalafix-scala2.conf"
+      }
+    Some(file)
+  },
+
+  scalafmtConfig := {
+    val base = (ThisBuild / baseDirectory).value
+    val file =
+      CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((3, _)) => base / ".scalafmt-scala3.conf"
+        case _            => base / ".scalafmt-scala2.conf"
+      }
+    file
+  },
+
+  scalacOptions ++=
+    (CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((3, _)) => scala3Options
+      case _            => scala2Options
+    }),
+
+  crossScalaVersions := Seq(scala3, scala2_13),
+)
 
 lazy val library = (project in file("."))
-  .settings(publish / skip := true)
+  .settings(
+    commonSettings,
+    crossScalaVersions := Nil,
+    publish / skip := true
+  )
   .aggregate(
    apiPlatformTpdDomain, apiPlatformTestTpdDomain
   )
 
 lazy val apiPlatformTpdDomain = Project("api-platform-tpd-domain", file("api-platform-tpd-domain"))
   .settings(
-    libraryDependencies ++= LibraryDependencies.tpdDomainDeps,
+    commonSettings,
+    libraryDependencies ++= LibraryDependencies.tpdDomainDeps(scalaVersion.value),
     ScoverageSettings(),
     Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT"),
 
@@ -43,7 +91,8 @@ lazy val apiPlatformTestTpdDomain = Project("api-platform-test-tpd-domain", file
     apiPlatformTpdDomain
   )
   .settings(
-    libraryDependencies ++= LibraryDependencies.tpdTestDomainDeps,
+    commonSettings,
+    libraryDependencies ++= LibraryDependencies.tpdTestDomainDeps(scalaVersion.value),
     ScoverageKeys.coverageEnabled := false,
     // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
     // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
@@ -53,11 +102,14 @@ lazy val apiPlatformTestTpdDomain = Project("api-platform-test-tpd-domain", file
 
 commands ++= Seq(
   Command.command("run-all-tests") { state => "test" :: state },
+  Command.command("coverage-test") { state => "coverage" :: "run-all-tests" :: "coverageOff" :: "coverageAggregate" :: state },
+  Command.command("check") { state => "clean" :: "coverage-test" :: state },
+  Command.command("all") { state => "clean" :: "scalafmtAll" :: "scalafixAll" :: "coverage-test" :: state },
 
-  Command.command("clean-and-test") { state => "clean" :: "compile" :: "run-all-tests" :: state },
+  Command.command("clean-and-test") { state => "clean" :: "run-all-tests" :: state },
 
   // Coverage does not need compile !
-  Command.command("pre-commit") { state => "clean" :: "scalafmtAll" :: "scalafixAll" :: "coverage" :: "run-all-tests" :: "coverageAggregate" :: "coverageOff" :: state }
+  Command.command("pre-commit") { state => "clean" :: "scalafmtAll" :: "scalafixAll" :: "coverage-test" :: state }
 )
 
 Global / bloopAggregateSourceDependencies := true

@@ -22,7 +22,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils.*
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.TaxRegimeInterests
 
 class TaxRegimeInterestsSpec extends BaseJsonFormattersSpec {
-  import TaxRegimeInterestsSpec._
+  import TaxRegimeInterestsSpec.*
 
   "TaxRegimeInterests JsonFormatters" when {
 

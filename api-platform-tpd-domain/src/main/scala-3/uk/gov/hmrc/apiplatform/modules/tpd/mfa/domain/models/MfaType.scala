@@ -24,7 +24,7 @@ object MfaType {
   import play.api.libs.json.Format
   import uk.gov.hmrc.apiplatform.modules.common.domain.services.SimpleEnumJsonFormatting
 
-  def apply(text: String): Option[MfaType] = MfaType.values.find(_.toString.toUpperCase == text.toUpperCase)
+  def apply(text: String): Option[MfaType] = MfaType.values.find(_.toString.equalsIgnoreCase(text))
 
   def unsafeApply(text: String): MfaType = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Mfa Type"))
 

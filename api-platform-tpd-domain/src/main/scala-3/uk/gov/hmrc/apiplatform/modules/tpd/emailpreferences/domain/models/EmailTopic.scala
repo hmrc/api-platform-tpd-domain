@@ -47,7 +47,7 @@ enum EmailTopic(val displayOrder: Int, val displayName: String, val description:
 
 object EmailTopic {
 
-  def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString.toUpperCase == text.toUpperCase)
+  def apply(text: String): Option[EmailTopic] = EmailTopic.values.find(_.toString.equalsIgnoreCase(text))
 
   def unsafeApply(text: String): EmailTopic = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Email Topic"))
 

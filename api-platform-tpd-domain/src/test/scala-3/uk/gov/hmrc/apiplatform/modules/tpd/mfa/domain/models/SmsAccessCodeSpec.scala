@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils.*
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsAccessCode}
 
 class SmsAccessCodeSpec extends BaseJsonFormattersSpec {
-  import SmsAccessCodeSpec._
+  import SmsAccessCodeSpec.*
 
   "SmsAccessCode JsonFormatters" when {
 

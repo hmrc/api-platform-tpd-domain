@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils.*
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.DeviceSessionId
 
 class SessionCreateWithDeviceRequestSpec extends BaseJsonFormattersSpec with FixedClock {
-  import SessionCreateWithDeviceRequestSpec._
+  import SessionCreateWithDeviceRequestSpec.*
 
   "SessionCreateWithDeviceRequest JsonFormatters" when {
 

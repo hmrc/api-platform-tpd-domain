@@ -21,7 +21,7 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.LaxEmailAddressFixtu
 import uk.gov.hmrc.apiplatform.modules.common.utils.*
 
 class SessionCreateRequestSpec extends BaseJsonFormattersSpec with FixedClock {
-  import SessionCreateRequestSpec._
+  import SessionCreateRequestSpec.*
 
   "SessionCreateRequest JsonFormatters" when {
 

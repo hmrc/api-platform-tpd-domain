@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils.*
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{DeviceSession, DeviceSessionId}
 
 class DeviceSessionSpec extends BaseJsonFormattersSpec {
-  import DeviceSessionSpec._
+  import DeviceSessionSpec.*
 
   "DeviceSession JsonFormatters" when {
 

@@ -101,7 +101,7 @@ class EmailTopicSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChec
     }
 
     "displayOrder orders correctly" in {
-      import EmailTopic._
+      import EmailTopic.*
       Random.shuffle(EmailTopic.values.toList).sortBy(_.displayOrder) shouldBe List(BusinessAndPolicy, Technical, ReleaseSchedules, EventInvites)
     }
   }

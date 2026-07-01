@@ -24,7 +24,7 @@ import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{Email
 import uk.gov.hmrc.apiplatform.modules.tpd.mfa.domain.models.{MfaId, SmsMfaDetail}
 
 class UserSpec extends BaseJsonFormattersSpec with FixedClock with LaxEmailAddressFixtures {
-  import UserSpec._
+  import UserSpec.*
 
   "User" should {
     "produce Json" in {

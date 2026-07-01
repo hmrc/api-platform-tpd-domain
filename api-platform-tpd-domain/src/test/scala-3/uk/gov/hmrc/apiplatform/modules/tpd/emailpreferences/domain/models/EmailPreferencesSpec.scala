@@ -24,7 +24,7 @@ import uk.gov.hmrc.apiplatform.modules.common.utils.*
 import uk.gov.hmrc.apiplatform.modules.tpd.emailpreferences.domain.models.{EmailPreferences, EmailTopic}
 
 class EmailPreferencesSpec extends BaseJsonFormattersSpec with TableDrivenPropertyChecks {
-  import EmailPreferencesSpec._
+  import EmailPreferencesSpec.*
 
   private val fullExample: EmailPreferences = EmailPreferences(interests = List(TaxRegimeInterestsSpec.example), topics = Set(EmailTopic.BusinessAndPolicy))
 

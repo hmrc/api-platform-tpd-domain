@@ -23,7 +23,7 @@ import uk.gov.hmrc.apiplatform.modules.tpd.session.domain.models.UserSessionSpec
 import uk.gov.hmrc.apiplatform.modules.tpd.session.dto.UserAuthenticationResponse
 
 class UserAuthenticationResponseSpec extends BaseJsonFormattersSpec with FixedClock {
-  import UserAuthenticationResponseSpec._
+  import UserAuthenticationResponseSpec.*
 
   "UserAuthenticationResponse JsonFormatters" when {
 

@@ -21,6 +21,6 @@ import uk.gov.hmrc.apiplatform.modules.common.domain.models.UserId
 case class DeviceSession(deviceSessionId: DeviceSessionId, userId: UserId)
 
 object DeviceSession {
-  import play.api.libs.json._
+  import play.api.libs.json.*
   given OFormat[DeviceSession] = Json.format[DeviceSession]
 }

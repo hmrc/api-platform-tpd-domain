@@ -25,7 +25,7 @@ enum LoggedInState:
 
 object LoggedInState {
 
-  def apply(text: String): Option[LoggedInState] = LoggedInState.values.find(_.toString.toUpperCase == text.toUpperCase)
+  def apply(text: String): Option[LoggedInState] = LoggedInState.values.find(_.toString.equalsIgnoreCase(text))
 
   def unsafeApply(text: String): LoggedInState = apply(text).getOrElse(throw new RuntimeException(s"$text is not a valid Logged In State"))
 

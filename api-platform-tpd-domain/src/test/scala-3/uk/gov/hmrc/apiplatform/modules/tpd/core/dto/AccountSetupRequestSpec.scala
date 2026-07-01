@@ -40,7 +40,7 @@ object AccountSetupRequestSpec {
 }
 
 class AccountSetupRequestSpec extends BaseJsonFormattersSpec {
-  import AccountSetupRequestSpec._
+  import AccountSetupRequestSpec.*
 
   "AccountSetupRequest JsonFormatters" when {
 

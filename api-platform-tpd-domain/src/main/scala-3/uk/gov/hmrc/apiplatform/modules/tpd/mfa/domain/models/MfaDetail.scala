@@ -29,7 +29,7 @@ sealed trait MfaDetail {
 }
 
 object MfaDetail {
-  import play.api.libs.json._
+  import play.api.libs.json.*
   import uk.gov.hmrc.play.json.Union
 
   given OFormat[AuthenticatorAppMfaDetail] = Json.format[AuthenticatorAppMfaDetail]

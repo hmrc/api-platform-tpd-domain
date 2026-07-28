@@ -20,8 +20,8 @@ enum LoggedInState:
   case LoggedIn
   case PartLoggedInEnablingMFA
 
-  val isLoggedIn: Boolean                = this == LoggedIn
-  val isPartLoggedInEnablingMFA: Boolean = this == PartLoggedInEnablingMFA
+  lazy val isLoggedIn: Boolean                = this == LoggedIn
+  lazy val isPartLoggedInEnablingMFA: Boolean = this == PartLoggedInEnablingMFA
 
 object LoggedInState {
 

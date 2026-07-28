@@ -40,6 +40,16 @@ class LoggedInStateSpec extends BaseJsonFormattersSpec with TableDrivenPropertyC
         (LoggedInState.PartLoggedInEnablingMFA, "PART_LOGGED_IN_ENABLING_MFA")
       )
 
+    "be logged in for LoggedIn" in {
+      LoggedInState.LoggedIn.isLoggedIn shouldBe true
+      LoggedInState.PartLoggedInEnablingMFA.isLoggedIn shouldBe false
+    }
+
+    "be part logged in enabling MFA for PartLoggedInEnablingMFA" in {
+      LoggedInState.PartLoggedInEnablingMFA.isPartLoggedInEnablingMFA shouldBe true
+      LoggedInState.LoggedIn.isPartLoggedInEnablingMFA shouldBe false
+    }
+
     "convert lower case string to case object" in {
       forAll(values) { (s, t, _) =>
         LoggedInState.apply(t.toLowerCase) shouldBe Some(s)

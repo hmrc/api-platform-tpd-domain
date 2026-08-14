@@ -6,7 +6,7 @@ import uk.gov.hmrc.SbtAutoBuildPlugin
 import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
 import bloop.integrations.sbt.BloopDefaults
 
-val appName = "api-platform-tpd-domain"
+val libName = "api-platform-tpd-domain"
 
 val scala2_13 = "2.13.18"
 val scala3 = "3.3.7"
@@ -62,40 +62,52 @@ lazy val commonSettings = Seq(
   crossScalaVersions := Seq(scala3, scala2_13),
 )
 
-lazy val library = (project in file("."))
+lazy val library = Project(s"$libName-root", file("."))
+
   .settings(
     commonSettings,
     crossScalaVersions := Nil,
-    publish / skip := true
+    publish / skip := true,
+    ScoverageSettings()
   )
   .aggregate(
-   apiPlatformTpdDomain, apiPlatformTestTpdDomain
+   apiPlatformTpdDomain, apiPlatformTpdDomainFixtures, apiPlatformTpdDomainTest
   )
 
-lazy val apiPlatformTpdDomain = Project("api-platform-tpd-domain", file("api-platform-tpd-domain"))
+lazy val apiPlatformTpdDomain = Project(libName, file(libName))
   .settings(
     commonSettings,
-    libraryDependencies ++= LibraryDependencies.tpdDomainDeps(scalaVersion.value),
-    ScoverageSettings(),
+    libraryDependencies ++= LibraryDependencies.domain(scalaVersion.value),
     Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT"),
-
-    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
-    // Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "test" / "scala",
-    
-    // Test / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
   )
   .disablePlugins(JUnitXmlReportPlugin)
 
-lazy val apiPlatformTestTpdDomain = Project("api-platform-test-tpd-domain", file("api-platform-test-tpd-domain"))
+
+lazy val apiPlatformTpdDomainFixtures = Project(s"$libName-fixtures", file(s"$libName-fixtures"))
   .dependsOn(
-    apiPlatformTpdDomain
+    apiPlatformTpdDomain % "compile"
   )
   .settings(
     commonSettings,
-    libraryDependencies ++= LibraryDependencies.tpdTestDomainDeps(scalaVersion.value),
+    libraryDependencies ++= LibraryDependencies.fixtures(scalaVersion.value),
     ScoverageKeys.coverageEnabled := false,
-    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "common" / "src" / "main" / "scala",
-    // Compile / unmanagedSourceDirectories += baseDirectory.value / ".." / "test-common" / "src" / "main" / "scala"
+    Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT"),
+  )
+  .disablePlugins(JUnitXmlReportPlugin)
+
+
+lazy val apiPlatformTpdDomainTest = Project(s"$libName-test", file(s"$libName-test"))
+  .dependsOn(
+    apiPlatformTpdDomain,
+    apiPlatformTpdDomainFixtures
+  )
+  .settings(
+    commonSettings,
+    publish / skip := true,
+    libraryDependencies ++= LibraryDependencies.tests(scalaVersion.value),
+    ScoverageKeys.coverageEnabled := false,
+        Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eT")
+
   )
   .disablePlugins(JUnitXmlReportPlugin)
 

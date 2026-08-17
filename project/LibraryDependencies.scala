@@ -1,22 +1,19 @@
 import sbt._
 
 object LibraryDependencies {
-  lazy val commonDomainVersion = "1.3.0"
+  lazy val commonDomainVersion = "1.4.0"
   
-  def domain(scalaVersion: String) =
+  def domain =
+    compileDependencies
+
+  def fixtures =
+    compileDependencies ++
+    fixturesDependencies.map(_ % "provided")
+
+  def tests =
     compileDependencies ++
     fixturesDependencies.map(_ % "test") ++ 
-    commonTestDependencies(scalaVersion)
-
-  def fixtures(scalaVersion: String) =
-    compileDependencies ++
-    fixturesDependencies.map(_ % "provided") ++ 
-    commonTestDependencies(scalaVersion)
-
-  def tests(scalaVersion: String) =
-    compileDependencies ++
-    fixturesDependencies.map(_ % "test") ++ 
-    commonTestDependencies(scalaVersion)
+    testDependencies
 
   private def compileDependencies = Seq(
     "uk.gov.hmrc"             %% "api-platform-common-domain"     % commonDomainVersion % "provided"
@@ -26,7 +23,6 @@ object LibraryDependencies {
     "uk.gov.hmrc"             %% "api-platform-common-domain-fixtures" % commonDomainVersion
   )
 
-  def commonTestDependencies(scalaVersion: String) = Seq(
-    "uk.gov.hmrc"             %% "api-platform-common-domain-fixtures"  % commonDomainVersion
-  ).map(_ % "test")
+  def testDependencies = Seq.empty[ModuleID]
+    .map(_ % "test")
 }

@@ -37,7 +37,8 @@ case class User(
     emailPreferences: EmailPreferences = EmailPreferences.noPreferences,
     userId: UserId,
     failedLogins: Int = 0,
-    lastLogin: Option[Instant] = None
+    lastLogin: Option[Instant] = None,
+    lastPasswordChange: Option[Instant] = None
   ) {
   lazy val displayedName: String   = s"$firstName $lastName"
   lazy val hasVerifiedMfa: Boolean = mfaDetails.exists(_.verified)

@@ -71,11 +71,12 @@ class UserSpec extends BaseJsonFormattersSpec with FixedClock with LaxEmailAddre
     ),
     emailPreferences = EmailPreferencesSpec.example,
     failedLogins = 2,
-    lastLogin = Some(Instants.aMonthAgo)
+    lastLogin = Some(Instants.aMonthAgo),
+    lastPasswordChange = Some(Instants.aYearAgo)
   )
 
   val fullJsonText =
-    s"""{"email":"$emailOne","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId","failedLogins":2,"lastLogin":"${Texts.aMonthAgo}"}"""
+    s"""{"email":"$emailOne","firstName":"Bob","lastName":"Bobbins","registrationTime":"${Texts.aYearAgo}","lastModified":"$nowAsText","verified":true,"mfaDetails":[{"id":"$mfaId","name":"xxx","createdOn":"${Texts.aYearAgo}","mobileNumber":"07999123456","verified":true,"mfaType":"SMS"}],"emailPreferences":${EmailPreferencesSpec.jsonText},"userId":"$userId","failedLogins":2,"lastLogin":"${Texts.aMonthAgo}","lastPasswordChange":"${Texts.aYearAgo}"}"""
 
 }
 

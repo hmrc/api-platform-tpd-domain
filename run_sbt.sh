@@ -7,7 +7,7 @@ die () {
 
 scala2 () {
   printf "Scala 2\n\n"
-  sbt "++ 2.13.16" $1
+  sbt "++ 2.13.18" $1
   printf "\n\nCompleted $1 for Scala 2\n\n"
 }
 
